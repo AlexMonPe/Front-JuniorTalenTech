@@ -1,10 +1,18 @@
-import './App.css';
+import './App.scss';
+import { ErrorComponent } from './components/Error/Error';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+
 
 function App() {
   return (
     <div className="App">
-      
-    </div>
+    <ErrorComponent>
+      <BrowserRouter>
+        <Routes>
+        </Routes>
+      </BrowserRouter>
+    </ErrorComponent>
+  </div>
   );
 }
 
