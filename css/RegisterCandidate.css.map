@@ -1,6 +1,6 @@
 {
     "version": 3,
-    "mappings": "",
+    "mappings": "AAAA,AAAA,cAAc,CAAA;EACV,OAAO,EAAE,IAAI;EACb,UAAU,EAAE,0BAA0B;EACtC,eAAe,EAAE,MAAM;EACvB,OAAO,EAAE,GAAG;CACf",
     "sources": [
         "../src/containers/RegisterCandidate/RegisterCandidate.scss"
     ],
