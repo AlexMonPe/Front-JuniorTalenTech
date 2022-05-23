@@ -14,7 +14,7 @@ function App() {
       <BrowserRouter>
       <Header />
         <Routes>
-        <Route path="/registerCandidate" element={<RegisterCandidate />} ></Route>
+        <Route path="/registerCandidate" element={<RegisterCandidate />}></Route>
         </Routes>
       </BrowserRouter>
     </ErrorComponent>
