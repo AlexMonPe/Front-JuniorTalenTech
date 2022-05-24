@@ -3,18 +3,18 @@ form {
     display: flex;
     box-shadow: 0px 0px 15px 6px $box-shadow-gray;
     justify-content: space-around;
-    padding: 2em;
+    padding: 3em;
     flex-wrap: wrap !important;
   }
   .lang-skills {
-      padding: 0;
+    padding: 0;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     flex-wrap: wrap !important;
   }
 }
-.warning{
+.warning {
   background-color: rgba(242, 99, 99, 0.635);
   width: 10em;
   height: 4em;

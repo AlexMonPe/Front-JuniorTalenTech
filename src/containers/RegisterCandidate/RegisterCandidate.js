@@ -93,7 +93,7 @@ setExperiences(expData)
   };
 
   return (
-    <div className="p-4">
+    <div className="p-md-5">
       <form className="row g-5 p-5" onSubmit={(e)=>registerSubmit(e)}>
         <div className="container-form-data .flex-sm-column">
           <h2 className="col-10 mb-5 text-center">Datos personales</h2>
@@ -174,18 +174,18 @@ setExperiences(expData)
         {experiences.map((experience, index)=>{
           return (
           <div className="container-form-data" key={index}>
-                <h2 className="col-10 mb-5 text-center">Experiencia</h2>
+                <h2 className="col-9 m-3 text-center col-xs-7">Experiencia</h2>
                 <button className="btn btn-secondary mb-5" onClick={addExperience}><i className="bi bi-plus-lg"></i></button>
                 <button className="btn btn-secondary mb-5" onClick={(e) => removeExperience(index, e)}><i className="bi bi-dash-lg"></i></button>
-                <div className="form-floating mb-4 col-10 col-sm-5">
+                <div className="form-floating mb-4 col-12 col-sm-5">
                   <input type="text" className="form-control" id="company_name" name="company_name" placeholder="Nombre empresa" value={experience.company_name} onChange={event=>handleExperienceChange(index,event)}/>
                   <label htmlFor="floatingInput ">Nombre empresa</label>
                 </div>
-                <div className="form-floating mb-4 col-10 col-sm-5">
+                <div className="form-floating mb-4 col-12 col-sm-5">
                   <input type="text" className="form-control" id="work_name" name="work_name" placeholder="Puesto de trabajo"  value={experience.work_name}onChange={event=>handleExperienceChange(index,event)}/>
                   <label htmlFor="floatingInput">Puesto de trabajo</label>
                 </div>
-                <div className="form-floating mb-4 col-10 col-sm-11">
+                <div className="form-floating mb-4 col-11">
                   <div className="form-floating">
                     <textarea className="form-control" placeholder="Funciones" id="functions" name="functions" style={{ height: "11em" }} value={experience.functions} onChange={event=>handleExperienceChange(index,event)}
                     ></textarea>
