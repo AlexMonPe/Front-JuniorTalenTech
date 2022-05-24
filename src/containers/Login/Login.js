@@ -11,6 +11,7 @@ const Login = () => {
       };
 
       const loginUser = await apiConsumer.login(loginData);
+      
       localStorage.setItem('token',loginUser.token)
       localStorage.setItem('id',loginUser.id)
       localStorage.setItem('role',loginUser.role)
@@ -21,7 +22,7 @@ const Login = () => {
   };
   return (
     <div className="login-page">
-      <form onSubmit={(e) => loginSubmit(e)} className="login">
+      <form onSubmit={loginSubmit} className="login">
       <div className="container-login-data ">
         <h2 className="mb-5 text-center">LOGIN</h2>
         <div className="form-floating mb-4 col-12">
