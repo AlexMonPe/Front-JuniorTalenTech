@@ -55,7 +55,7 @@ const RegisterCandidate = () => {
 
   return (
     <div className="p-4">
-      <form className="row g-5 p-5" onSubmit={(e) => registerSubmit(e)}>
+      <form className="row g-5 p-5" onSubmit={registerSubmit}>
         <div className="container-form-data .flex-sm-column">
           <h2 className="col-10 mb-5 text-center">Datos personales</h2>
 
