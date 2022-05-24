@@ -15,6 +15,8 @@ $theme-colors: map-merge($theme-colors, $custom-colors);
 
 
 @import "../../node_modules/bootstrap/scss/bootstrap.scss";
+@import 'bootstrap-icons/font/bootstrap-icons.css';
+@import "../../node_modules/bootstrap-icons/font/bootstrap-icons.scss";
 
 @import "./variables.scss";
 @import "./reset.scss";
