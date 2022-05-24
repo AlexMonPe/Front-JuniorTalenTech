@@ -1,0 +1,19 @@
+.login-page{
+    padding: 2em;
+    display: flex;
+    background-image: url('../../../public/images/bg-login.jpg');    
+    background-size: cover;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-login-data{
+    background-color: #e8f0fecf;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0px 0px 15px 6px #a6abd9;
+    align-content: center;
+    padding: 3em;
+    max-width: 800px;
+}
