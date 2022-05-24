@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import RegisterCandidate from './containers/RegisterCandidate/RegisterCandidate.js';
 import Header from './components/Header/Header.js';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import Login from './containers/RegisterCandidate/Login/Login';
 
 
 
@@ -15,6 +16,7 @@ function App() {
       <Header />
         <Routes>
         <Route path="/registerCandidate" element={<RegisterCandidate />}></Route>
+        <Route path="/login" element={<Login />}></Route>
         </Routes>
       </BrowserRouter>
     </ErrorComponent>
