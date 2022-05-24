@@ -56,7 +56,8 @@ const handleExperienceChange = (index, event) => {
   setExperiences(expData);
 };
 
-const addExperience = () =>{
+const addExperience = (event) =>{
+  event.preventDefault();
   let newExperience = {
     company_name: '',
     work_name: '',
@@ -67,7 +68,8 @@ const addExperience = () =>{
   setExperiences([...experiences, newExperience])
 }
 
-const removeExperience = (index) => {
+const removeExperience = (index,event) => {
+  event.preventDefault();
 let expData = [...experiences];
 if (expData.length > 1) expData.splice(index,1);
 setExperiences(expData)
@@ -81,6 +83,7 @@ setExperiences(expData)
     console.log(experiences, 'experiences')
 
     try {
+
       const candidateCreated = await apiConsumer.registerCandidate(data);
 
       (candidateCreated.error) ? setError(candidateCreated.error) : setError(false);
@@ -91,7 +94,7 @@ setExperiences(expData)
 
   return (
     <div className="p-4">
-      <form className="row g-5 p-5" onSubmit={registerSubmit}>
+      <form className="row g-5 p-5" onSubmit={(e)=>registerSubmit(e)}>
         <div className="container-form-data .flex-sm-column">
           <h2 className="col-10 mb-5 text-center">Datos personales</h2>
 
@@ -172,8 +175,8 @@ setExperiences(expData)
           return (
           <div className="container-form-data" key={index}>
                 <h2 className="col-10 mb-5 text-center">Experiencia</h2>
-                <button className="btn btn-primary mb-5" onClick={addExperience}><i class="bi bi-plus-lg"></i></button>
-                <button className="btn btn-primary mb-5" onClick={() => removeExperience(index)}><i class="bi bi-dash-lg"></i></button>
+                <button className="btn btn-secondary mb-5" onClick={addExperience}><i className="bi bi-plus-lg"></i></button>
+                <button className="btn btn-secondary mb-5" onClick={(e) => removeExperience(index, e)}><i className="bi bi-dash-lg"></i></button>
                 <div className="form-floating mb-4 col-10 col-sm-5">
                   <input type="text" className="form-control" id="company_name" name="company_name" placeholder="Nombre empresa" value={experience.company_name} onChange={event=>handleExperienceChange(index,event)}/>
                   <label htmlFor="floatingInput ">Nombre empresa</label>
