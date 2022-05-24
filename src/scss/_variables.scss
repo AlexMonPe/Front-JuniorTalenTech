@@ -1,1 +1,15 @@
 $box-shadow-gray: #6462625e;
+
+$grid-breakpoints: (
+  xs: 320px,
+  sm: 480px,
+  md: 768px,
+  lg: 1024px,
+);
+
+$container-max-widths: (
+  xs: 375px,
+  sm: 420px,
+  md: 720px,
+  lg: 960px,
+);

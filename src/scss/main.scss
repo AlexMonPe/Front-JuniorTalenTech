@@ -1,8 +1,13 @@
+
+@import "./variables.scss";
+@import "./reset.scss";
+
+
+@import "../../node_modules/bootstrap-icons/font/bootstrap-icons.scss";
 @import "../../node_modules/bootstrap/scss/functions";
 @import "../../node_modules/bootstrap/scss/variables";
 @import "../../node_modules/bootstrap/scss/mixins";
 @import "../../node_modules/bootstrap/scss/root";
-
 
 // Create your own map
 $custom-colors: (
@@ -12,18 +17,18 @@ $custom-colors: (
 // Merge the maps
 $theme-colors: map-merge($theme-colors, $custom-colors);
 
-
-
-@import "../../node_modules/bootstrap/scss/bootstrap.scss";
-@import 'bootstrap-icons/font/bootstrap-icons.css';
-@import "../../node_modules/bootstrap-icons/font/bootstrap-icons.scss";
-
-@import "./variables.scss";
-@import "./reset.scss";
-
 //Components
 
 @import "../components/Error/Error.scss";
 @import "../components/Header/Header.scss";
 @import "../containers/RegisterCandidate/RegisterCandidate.scss";
 @import "../containers/Login/Login.scss";
+
+//Bootstrap imports
+
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
+@import 'bootstrap-icons/font/bootstrap-icons.css';
+
+
+
+
