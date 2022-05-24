@@ -51,14 +51,35 @@ const RegisterCandidate = () => {
 }
 
 const handleExperienceChange = (index, event) => {
-  let data = [...experiences];
-  data[index][event.target.name] = event.target.value;
-  setExperiences(data);
+  let expData = [...experiences];
+  expData[index][event.target.name] = event.target.value;
+  setExperiences(expData);
 };
+
+const addExperience = () =>{
+  let newExperience = {
+    company_name: '',
+    work_name: '',
+    functions: '',
+    start_year: '',
+    finish_year: '',
+  }
+  setExperiences([...experiences, newExperience])
+}
+
+const removeExperience = (index) => {
+let expData = [...experiences];
+if (expData.length > 1) expData.splice(index,1);
+setExperiences(expData)
+
+}
 
   const registerSubmit = async (event) => {
     event.preventDefault();
+    setData({...data, experience: experiences})
     console.log(data, 'dataastate')
+    console.log(experiences, 'experiences')
+
     try {
       const candidateCreated = await apiConsumer.registerCandidate(data);
 
@@ -151,6 +172,8 @@ const handleExperienceChange = (index, event) => {
           return (
           <div className="container-form-data" key={index}>
                 <h2 className="col-10 mb-5 text-center">Experiencia</h2>
+                <button className="btn btn-primary mb-5" onClick={addExperience}><i class="bi bi-plus-lg"></i></button>
+                <button className="btn btn-primary mb-5" onClick={() => removeExperience(index)}><i class="bi bi-dash-lg"></i></button>
                 <div className="form-floating mb-4 col-10 col-sm-5">
                   <input type="text" className="form-control" id="company_name" name="company_name" placeholder="Nombre empresa" value={experience.company_name} onChange={event=>handleExperienceChange(index,event)}/>
                   <label htmlFor="floatingInput ">Nombre empresa</label>
@@ -179,7 +202,7 @@ const handleExperienceChange = (index, event) => {
                   </label>
                 </div>
           </div>
-          )
+          );
           
         })}
         <div className="lang-skills col-12">
@@ -190,7 +213,11 @@ const handleExperienceChange = (index, event) => {
               <label htmlFor="floatingInput ">Idioma</label>
             </div>
             <div className="form-floating mb-4 col-11">
-              <select className="form-select" id="level" aria-label="Floating label select example" name="level" options={["Basico", "Intermedio", "Avanzado"]} onChange={handleInputChange}/>
+              <select className="form-select" id="level" aria-label="Floating label select example" name="level" onChange={handleInputChange}>
+                <option value="Basico">Basico</option>
+                <option value="Intermedio">Intermedio</option>
+                <option value="Avanzado">Avanzado</option>
+              </select>
               <label htmlFor="floatingSelect">Nivel</label>
             </div>
           </div>
