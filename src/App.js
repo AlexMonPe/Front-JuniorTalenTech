@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import RegisterCandidate from './containers/RegisterCandidate/RegisterCandidate.js';
 import Header from './components/Header/Header.js';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import Login from './containers/RegisterCandidate/Login/Login';
+import Login from './containers/Login/Login.js';
 
 
 
