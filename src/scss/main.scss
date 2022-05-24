@@ -23,4 +23,5 @@ $theme-colors: map-merge($theme-colors, $custom-colors);
 
 @import "../components/Error/Error.scss";
 @import "../components/Header/Header.scss";
-@import "../containers/RegisterCandidate/RegisterCandidate.scss"
+@import "../containers/RegisterCandidate/RegisterCandidate.scss";
+@import "../containers/Login/Login.scss";
