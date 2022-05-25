@@ -2,89 +2,100 @@ import { useState } from "react";
 import Select from "../../components/Select/Select.js";
 import { apiConsumer } from "../../services/apiConsumer.js";
 import Input from "../../components/Input/Input.js";
+import { useDispatch, useSelector } from "react-redux";
+import actionCreator from "../../store/actionTypes.js";
+import { ADD_EXPERIENCE, HANDLE_EXPERIENCE, HANDLE_INPUT } from "../../store/typesVar.js";
 
 const RegisterCandidate = () => {
+  const dispatch = useDispatch();
+  const formData = useSelector((state) => state.candidate.form)
+  const experiences = useSelector((state) => state.candidate.experience)
+
   const [error, setError] = useState("");
 
-  const [data, setData] = useState({
-    name: '',
-    surname: '',
-    email: '',
-    password: '',
-    born_date: '',
-    phone_number: '',
-    city: '',
-    title: '',
-    training: [
-      {
-        level: '',
-        specialty: '',
-        center: '',
-        start_year: '',
-        finish_year: '',
-      },
-    ],
-    abilities: [''],
-    languages: [
-      {
-        language_name: '',
-        language_level: '',
-      },
-    ],
-  })
+  // const [data, setData] = useState({
+  //   name: '',
+  //   surname: '',
+  //   email: '',
+  //   password: '',
+  //   born_date: '',
+  //   phone_number: '',
+  //   city: '',
+  //   title: '',
+  //   training: [
+  //     {
+  //       level: '',
+  //       specialty: '',
+  //       center: '',
+  //       start_year: '',
+  //       finish_year: '',
+  //     },
+  //   ],
+  //   abilities: [''],
+  //   languages: [
+  //     {
+  //       language_name: '',
+  //       language_level: '',
+  //     },
+  //   ],
+  // })
 
-  const [experiences, setExperiences] = useState([
-      {
-        company_name: '',
-        work_name: '',
-        functions: '',
-        start_year: '',
-        finish_year: '',
-      },
-    ]);
+  // const [experiences, setExperiences] = useState([
+  //     {
+  //       company_name: '',
+  //       work_name: '',
+  //       functions: '',
+  //       start_year: '',
+  //       finish_year: '',
+  //     },
+  //   ]);
 
   const handleInputChange = (event) => {
-    setData({
-        ...data,
-        [event.target.name] : event.target.value
-    })
+    dispatch(actionCreator(HANDLE_INPUT, event.target))
+    // setData({
+    //     ...data,
+    //     [event.target.name] : event.target.value
+    // })
 }
-
+console.log('recarga')
 const handleExperienceChange = (index, event) => {
   let expData = [...experiences];
   expData[index][event.target.name] = event.target.value;
-  setExperiences(expData);
+  dispatch(actionCreator(HANDLE_EXPERIENCE, expData))
+  
+  // setExperiences(expData);
 };
 
 const addExperience = (event) =>{
   event.preventDefault();
-  let newExperience = {
-    company_name: '',
-    work_name: '',
-    functions: '',
-    start_year: '',
-    finish_year: '',
-  }
-  setExperiences([...experiences, newExperience])
+  // let newExperience = {
+  //   company_name: '',
+  //   work_name: '',
+  //   functions: '',
+  //   start_year: '',
+  //   finish_year: '',
+  // }
+  dispatch(actionCreator(ADD_EXPERIENCE))
+  // setExperiences([...experiences, newExperience])
 }
 
 const removeExperience = (index,event) => {
   event.preventDefault();
-let expData = [...experiences];
-if (expData.length > 1) expData.splice(index,1);
-setExperiences(expData)
+// let expData = [...experiences];
+// if (expData.length > 1) expData.splice(index,1);
+// setExperiences(expData)
 
 }
 
   const registerSubmit = async (event) => {
     event.preventDefault();
-    setData({...data, experience: experiences})
-    console.log(data, 'dataastate')
+    // setData({...data, experience: experiences})
+    // console.log(data, 'dataastate')
     console.log(experiences, 'experiences')
 
     try {
 
-      const candidateCreated = await apiConsumer.registerCandidate(data);
+      const candidateCreated = await apiConsumer.registerCandidate(formData);
 
       (candidateCreated.error) ? setError(candidateCreated.error) : setError(false);
     } catch (error) {
@@ -99,36 +110,36 @@ setExperiences(expData)
           <h2 className="col-10 mb-5 text-center">Datos personales</h2>
 
           <div className="form-floating mb-4 col-10 col-sm-4">
-            <input type="text" className="form-control" id="name" placeholder="nombre" pattern="[a-zA-Z]{2,254}" name="name" onChange={handleInputChange} />
+            <input type="text" className="form-control" id="name" placeholder="nombre" pattern="[a-zA-Z]{2,254}" name="name" onBlur={handleInputChange} />
             <label htmlFor="floatingInput ">Nombre</label>
           </div>
           <div className="form-floating mb-4 col-10 col-sm-6">
-            <input type="text" className="form-control" id="surname" placeholder="apellido" name="surname" pattern="[a-zA-Z]{2,254}" onChange={handleInputChange}/>
+            <input type="text" className="form-control" id="surname" placeholder="apellido" name="surname" pattern="[a-zA-Z]{2,254}" onBlur={handleInputChange}/>
             <label htmlFor="floatingInput">Apellido</label>
           </div>
           <div className="form-floating mb-4 col-10 col-sm-5">
-            <input type="email" className="form-control" id="email" name="email" placeholder="example@example.com" onChange={handleInputChange} />
+            <input type="email" className="form-control" id="email" name="email" placeholder="example@example.com" onBlur={handleInputChange} />
             <label htmlFor="floatingInput">Email</label>
           </div>
           <div className="form-floating mb-4 col-10 col-sm-5">
-            <input type="password" className="form-control" id="password" name="password" placeholder="contraseña" minLength={6} onChange={handleInputChange} required
+            <input type="password" className="form-control" id="password" name="password" placeholder="contraseña" minLength={6} onBlur={handleInputChange} required
             />
             <label htmlFor="floatingInput">Contraseña</label>
           </div>
           <div className="form-floating mb-4 col-10 col-sm-5 col-lg-3">
-            <input type="text" className="form-control" id="city" placeholder="ciudad" name="city" pattern="[a-zA-Z]{2,254}" onChange={handleInputChange}/>
+            <input type="text" className="form-control" id="city" placeholder="ciudad" name="city" pattern="[a-zA-Z]{2,254}" onBlur={handleInputChange}/>
             <label htmlFor="floatingInput">Ciudad</label>
           </div>
           <div className="form-floating mb-4 col-10 col-sm-5 col-lg-3">
-            <input type="tel" name="phone_number" className="form-control" id="phone_number" minLength={9} maxLength={9} placeholder="telefono" onChange={handleInputChange}/>
+            <input type="tel" name="phone_number" className="form-control" id="phone_number" minLength={9} maxLength={9} placeholder="telefono" onBlur={handleInputChange}/>
             <label htmlFor="floatingInput">Teléfono</label>
           </div>
           <div className="form-floating mb-4 col-10 col-sm-11 col-md-4 col-lg-3">
-            <input type="date" className="form-control" id="born_date" placeholder="dd/mm/aaaa" name="born_date" onChange={handleInputChange}/>
+            <input type="date" className="form-control" id="born_date" placeholder="dd/mm/aaaa" name="born_date" onBlur={handleInputChange}/>
             <label htmlFor="floatingInput startDate">Fecha de nacimiento</label>
           </div>
           <div className="form-floating col-10 col-sm-11 col-md-6">
-            <input type="text" className="form-control" id="title" name="title" placeholder="Frontend Developer" onChange={handleInputChange}/>
+            <input type="text" className="form-control" id="title" name="title" placeholder="Frontend Developer" onBlur={handleInputChange}/>
             <label htmlFor="floatingInput">Titular de tu profesión</label>
           </div>
         </div>

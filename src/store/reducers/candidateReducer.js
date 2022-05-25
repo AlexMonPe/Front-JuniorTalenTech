@@ -1,3 +1,9 @@
+import {
+  ADD_EXPERIENCE,
+  HANDLE_EXPERIENCE,
+  HANDLE_INPUT,
+} from "../typesVar.js";
+
 const initialState = {
   form: {
     name: "",
@@ -25,15 +31,42 @@ const initialState = {
       },
     ],
   },
-  experience: {
-    company_name: '',
-    work_name: '',
-    functions: '',
-    start_year: '',
-    finish_year: '',
-  }
+  experience: [
+    {
+      company_name: "",
+      work_name: "",
+      functions: "",
+      start_year: "",
+      finish_year: "",
+    },
+  ],
 };
 
 export const candidateReducer = (state = initialState, action) => {
+  if (action.type === HANDLE_INPUT) {
+    return {
+      ...state,
+      form: {
+        [action.payload.name]: action.payload.value,
+      },
+    };
+  }
+  if (action.type === HANDLE_EXPERIENCE) {
+    return {
+      ...state,
+      experience: action.payload,
+    };
+  }
+
+  if (action.type == ADD_EXPERIENCE) {
+    let newExperience = {
+      company_name: "",
+      work_name: "",
+      functions: "",
+      start_year: "",
+      finish_year: "",
+    };
+     this.experience.push(newExperience)
+  }
   return state;
 };
