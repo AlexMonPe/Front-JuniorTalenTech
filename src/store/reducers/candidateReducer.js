@@ -2,6 +2,7 @@ import {
   ADD_EXPERIENCE,
   HANDLE_EXPERIENCE,
   HANDLE_INPUT,
+  REMOVE_EXPERIENCE,
 } from "../typesVar.js";
 
 const initialState = {
@@ -46,9 +47,7 @@ export const candidateReducer = (state = initialState, action) => {
   if (action.type === HANDLE_INPUT) {
     return {
       ...state,
-      form: {
-        [action.payload.name]: action.payload.value,
-      },
+      form: action.payload,
     };
   }
   if (action.type === HANDLE_EXPERIENCE) {
@@ -66,7 +65,18 @@ export const candidateReducer = (state = initialState, action) => {
       start_year: "",
       finish_year: "",
     };
-     this.experience.push(newExperience)
+    return {
+      ...state,
+      experience: state.experience.concat([newExperience]),
+    };
+  }
+  if (action.type == REMOVE_EXPERIENCE) {
+    let expData = [...state.experience];
+    if (expData.length > 1) expData.splice(action.payload,1);
+    return{
+        ...state,
+        experience: expData,
+    };
   }
   return state;
 };
