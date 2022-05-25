@@ -4,7 +4,7 @@ import { apiConsumer } from "../../services/apiConsumer.js";
 import Input from "../../components/Input/Input.js";
 import { useDispatch, useSelector } from "react-redux";
 import actionCreator from "../../store/actionTypes.js";
-import { ADD_EXPERIENCE, HANDLE_EXPERIENCE, HANDLE_INPUT } from "../../store/typesVar.js";
+import { ADD_EXPERIENCE, HANDLE_EXPERIENCE, HANDLE_INPUT, REMOVE_EXPERIENCE } from "../../store/typesVar.js";
 
 const RegisterCandidate = () => {
   const dispatch = useDispatch();
@@ -51,7 +51,12 @@ const RegisterCandidate = () => {
   //   ]);
 
   const handleInputChange = (event) => {
-    dispatch(actionCreator(HANDLE_INPUT, event.target))
+
+    let inputData = {...formData, 
+      [event.target.name] : event.target.value
+    };
+    
+    dispatch(actionCreator(HANDLE_INPUT, inputData))
     // setData({
     //     ...data,
     //     [event.target.name] : event.target.value
@@ -81,6 +86,7 @@ const addExperience = (event) =>{
 
 const removeExperience = (index,event) => {
   event.preventDefault();
+  dispatch(actionCreator(REMOVE_EXPERIENCE, index))
 // let expData = [...experiences];
 // if (expData.length > 1) expData.splice(index,1);
 // setExperiences(expData)
@@ -91,10 +97,10 @@ const removeExperience = (index,event) => {
     event.preventDefault();
     // setData({...data, experience: experiences})
     // console.log(data, 'dataastate')
-    console.log(experiences, 'experiences')
+    // console.log(experiences, 'experiences')
 
     try {
-
+      console.log(formData, 'formulario completo')
       const candidateCreated = await apiConsumer.registerCandidate(formData);
 
       (candidateCreated.error) ? setError(candidateCreated.error) : setError(false);
@@ -146,7 +152,7 @@ const removeExperience = (index,event) => {
         <div className="container-form-data mb-5">
           <h2 className="col-10 mb-5 text-center">Formación</h2>
           <div className="form-floating mb-4 col-10 col-sm-5">
-            <select className="form-select" id="floatingSelect" aria-label="Floating label select example" name="level" onChange={handleInputChange}>
+            <select className="form-select" id="floatingSelect" aria-label="Floating label select example" name="level" onBlur={handleInputChange}>
               <option value="Educacion Secundaria Obligatoria">Educacion Secundaria Obligatoria</option>
               <option value="Bachillerato">Bachillerato</option>
               <option value="Ciclo Formativo de grado Medio">Ciclo Formativo de grado Medio</option>
@@ -160,23 +166,23 @@ const removeExperience = (index,event) => {
             <label htmlFor="floatingSelect">Nivel de estudios</label>
           </div>
           <div className="form-floating mb-4 col-10 col-sm-5">
-            <input type="text" className="form-control" id="specialty" name="specialty" placeholder="Especialidad" onChange={handleInputChange}/>
+            <input type="text" className="form-control" id="specialty" name="specialty" placeholder="Especialidad" onBlur={handleInputChange}/>
             <label htmlFor="floatingInput">Especialidad</label>
           </div>
           <div className="form-floating mb-4 col-10 col-sm-11">
             <div className="form-floating">
-              <input className="form-control" placeholder="Nombre centro" id="center" name="center" onChange={handleInputChange}/>
+              <input className="form-control" placeholder="Nombre centro" id="center" name="center" onBlur={handleInputChange}/>
               <label htmlFor="floatingTextarea">Centro / Universidad</label>
             </div>
           </div>
           <div className="form-floating mb-4 col-10 col-sm-11 col-md-5 col-lg-5">
-            <input type="text" className="form-control" id="start_year" placeholder="año" name="start_year" pattern="^[0-9]+$" minLength={4} maxLength={4} onChange={handleInputChange}/>
+            <input type="text" className="form-control" id="start_year" placeholder="año" name="start_year" pattern="^[0-9]+$" minLength={4} maxLength={4} onBlur={handleInputChange}/>
             <label htmlFor="floatingInput">
               Año de inicio ( Ejemplo: 2008 )
             </label>
           </div>
           <div className="form-floating mb-4 col-10 col-sm-11 col-md-5 col-lg-5">
-            <input type="text" className="form-control" id="finish_year" placeholder="año" name="finish_year" pattern="^[0-9]+$" minLength={4} maxLength={4} onChange={handleInputChange}/>
+            <input type="text" className="form-control" id="finish_year" placeholder="año" name="finish_year" pattern="^[0-9]+$" minLength={4} maxLength={4} onBlur={handleInputChange}/>
             <label htmlFor="floatingInput startDate">
               Año de fin ( Ejemplo: 2021 )
             </label>
@@ -193,7 +199,7 @@ const removeExperience = (index,event) => {
                   <label htmlFor="floatingInput ">Nombre empresa</label>
                 </div>
                 <div className="form-floating mb-4 col-12 col-sm-5">
-                  <input type="text" className="form-control" id="work_name" name="work_name" placeholder="Puesto de trabajo"  value={experience.work_name}onChange={event=>handleExperienceChange(index,event)}/>
+                  <input type="text" className="form-control" id="work_name" name="work_name" placeholder="Puesto de trabajo"  value={experience.work_name} onChange={event=>handleExperienceChange(index,event)}/>
                   <label htmlFor="floatingInput">Puesto de trabajo</label>
                 </div>
                 <div className="form-floating mb-4 col-11">
@@ -223,11 +229,11 @@ const removeExperience = (index,event) => {
           <div className="container-form-data mb-5 col-12 col-md-6">
             <h2 className="col-10 mb-5 text-center">Idiomas</h2>
             <div className="form-floating col-11 mb-5">
-              <input type="text" className="form-control" id="language_name" placeholder="Idioma" name="language_name" onChange={handleInputChange}/>
+              <input type="text" className="form-control" id="language_name" placeholder="Idioma" name="language_name" onBlur={handleInputChange}/>
               <label htmlFor="floatingInput ">Idioma</label>
             </div>
             <div className="form-floating mb-4 col-11">
-              <select className="form-select" id="level" aria-label="Floating label select example" name="level" onChange={handleInputChange}>
+              <select className="form-select" id="level" aria-label="Floating label select example" name="level" onBlur={handleInputChange}>
                 <option value="Basico">Basico</option>
                 <option value="Intermedio">Intermedio</option>
                 <option value="Avanzado">Avanzado</option>
@@ -238,7 +244,7 @@ const removeExperience = (index,event) => {
           <div className="container-form-data mb-5 col-12 col-md-5">
             <h2 className="col-10 mb-5 text-center">Habilidades</h2>
             <div className="form-floating col-10">
-              <input type="text" className="form-control" id="abilities" placeholder="Habilidades" name="abilities" onChange={handleInputChange}/>
+              <input type="text" className="form-control" id="abilities" placeholder="Habilidades" name="abilities" onBlur={handleInputChange}/>
               <label htmlFor="floatingInput ">Habilidades</label>
             </div>
           </div>
