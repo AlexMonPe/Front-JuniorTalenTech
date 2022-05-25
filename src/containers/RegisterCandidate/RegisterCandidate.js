@@ -2,12 +2,14 @@ import { useState } from "react";
 import { apiConsumer } from "../../services/apiConsumer.js";
 import { useDispatch, useSelector } from "react-redux";
 import actionCreator from "../../store/actionTypes.js";
-import { ADD_EXPERIENCE, HANDLE_EXPERIENCE, HANDLE_INPUT, REMOVE_EXPERIENCE } from "../../store/typesVar.js";
+import { ADD_EXPERIENCE, ADD_TRAINING, HANDLE_EXPERIENCE, HANDLE_INPUT, HANDLE_TRAINING, REMOVE_EXPERIENCE } from "../../store/typesVar.js";
 
 const RegisterCandidate = () => {
   const dispatch = useDispatch();
   const formData = useSelector((state) => state.candidate.form)
   const experiences = useSelector((state) => state.candidate.experience)
+  const training = useSelector((state) => state.candidate.training)
+
 
   const [error, setError] = useState("");
 
@@ -26,6 +28,17 @@ const handleExperienceChange = (index, event) => {
   dispatch(actionCreator(HANDLE_EXPERIENCE, expData))
 
 };
+const handletrainingChange = (index,event) =>{
+  let trainData = [...training];
+  trainData[index][event.target.name] = event.target.value;
+  dispatch(actionCreator(HANDLE_TRAINING, trainData))
+}
+
+const addTraining = (event) =>{
+  event.preventDefault();
+  dispatch(actionCreator(ADD_TRAINING))
+}
+
 
 const addExperience = (event) =>{
   event.preventDefault();
@@ -90,45 +103,53 @@ const removeExperience = (index,event) => {
             <label htmlFor="floatingInput">Titular de tu profesión</label>
           </div>
         </div>
-        <div className="container-form-data mb-5">
-          <h2 className="col-10 mb-5 text-center">Formación</h2>
-          <div className="form-floating mb-4 col-10 col-sm-5">
-            <select className="form-select" id="floatingSelect" aria-label="Floating label select example" name="level" onBlur={handleInputChange}>
-              <option value="Educacion Secundaria Obligatoria">Educacion Secundaria Obligatoria</option>
-              <option value="Bachillerato">Bachillerato</option>
-              <option value="Ciclo Formativo de grado Medio">Ciclo Formativo de grado Medio</option>
-              <option value="Ciclo Formativo de grado Superior">Ciclo Formativo de grado Superior</option>
-              <option value="Licenciatura">Licenciatura</option>
-              <option value="Diplomatura">Diplomatura</option>
-              <option value="Ingenieria">Ingenieria</option>
-              <option value="Master">Master</option>
-              <option value="Otras titulaciones">Otras titulaciones</option>
-            </select>
-            <label htmlFor="floatingSelect">Nivel de estudios</label>
-          </div>
-          <div className="form-floating mb-4 col-10 col-sm-5">
-            <input type="text" className="form-control" id="specialty" name="specialty" placeholder="Especialidad" onBlur={handleInputChange}/>
-            <label htmlFor="floatingInput">Especialidad</label>
-          </div>
-          <div className="form-floating mb-4 col-10 col-sm-11">
-            <div className="form-floating">
-              <input className="form-control" placeholder="Nombre centro" id="center" name="center" onBlur={handleInputChange}/>
-              <label htmlFor="floatingTextarea">Centro / Universidad</label>
+        {training.map((training, index)=>{
+          return (
+          <div className="container-form-data mb-5" key={index}>
+            <h2 className="col-10 mb-5 text-center">Formación</h2>
+            <button className="btn btn-secondary mb-5" onClick={addTraining}><i className="bi bi-plus-lg"></i></button>
+            <button className="btn btn-secondary mb-5" onClick={(e) => removeExperience(index, e)}><i className="bi bi-dash-lg"></i></button>
+            <div className="form-floating mb-4 col-10 col-sm-5">
+              <select className="form-select" id="floatingSelect" aria-label="Floating label select example" name="level" value={training.level} onChange={event=>handletrainingChange(index,event)}>
+                <option value="Educacion Secundaria Obligatoria">Educacion Secundaria Obligatoria</option>
+                <option value="Bachillerato">Bachillerato</option>
+                <option value="Ciclo Formativo de grado Medio">Ciclo Formativo de grado Medio</option>
+                <option value="Ciclo Formativo de grado Superior">Ciclo Formativo de grado Superior</option>
+                <option value="Licenciatura">Licenciatura</option>
+                <option value="Diplomatura">Diplomatura</option>
+                <option value="Ingenieria">Ingenieria</option>
+                <option value="Master">Master</option>
+                <option value="Otras titulaciones">Otras titulaciones</option>
+              </select>
+              <label htmlFor="floatingSelect">Nivel de estudios</label>
             </div>
-          </div>
-          <div className="form-floating mb-4 col-10 col-sm-11 col-md-5 col-lg-5">
-            <input type="text" className="form-control" id="start_year" placeholder="año" name="start_year" pattern="^[0-9]+$" minLength={4} maxLength={4} onBlur={handleInputChange}/>
-            <label htmlFor="floatingInput">
-              Año de inicio ( Ejemplo: 2008 )
-            </label>
-          </div>
-          <div className="form-floating mb-4 col-10 col-sm-11 col-md-5 col-lg-5">
-            <input type="text" className="form-control" id="finish_year" placeholder="año" name="finish_year" pattern="^[0-9]+$" minLength={4} maxLength={4} onBlur={handleInputChange}/>
-            <label htmlFor="floatingInput startDate">
-              Año de fin ( Ejemplo: 2021 )
-            </label>
-          </div>
+            <div className="form-floating mb-4 col-10 col-sm-5">
+              <input type="text" className="form-control" id="specialty" name="specialty" value={training.specialty} placeholder="Especialidad" onChange={event=>handletrainingChange(index,event)}/>
+              <label htmlFor="floatingInput">Especialidad</label>
+            </div>
+            <div className="form-floating mb-4 col-10 col-sm-11">
+              <div className="form-floating">
+                <input className="form-control" placeholder="Nombre centro" id="center" name="center" value={training.center} onChange={event=>handletrainingChange(index,event)}/>
+                <label htmlFor="floatingTextarea">Centro / Universidad</label>
+              </div>
+            </div>
+            <div className="form-floating mb-4 col-10 col-sm-11 col-md-5 col-lg-5">
+              <input type="text" className="form-control" id="start_year" placeholder="año" name="start_year" value={training.start_year} pattern="^[0-9]+$" minLength={4} maxLength={4} onChange={event=>handletrainingChange(index,event)}/>
+              <label htmlFor="floatingInput">
+                Año de inicio ( Ejemplo: 2008 )
+              </label>
+            </div>
+            <div className="form-floating mb-4 col-10 col-sm-11 col-md-5 col-lg-5">
+              <input type="text" className="form-control" id="finish_year" placeholder="año" name="finish_year" value={training.finish_year} pattern="^[0-9]+$" minLength={4} maxLength={4} onChange={event=>handletrainingChange(index,event)}/>
+              <label htmlFor="floatingInput startDate">
+                Año de fin ( Ejemplo: 2021 )
+              </label>
+            </div>
         </div>
+          );
+          
+        })}
+        
         {experiences.map((experience, index)=>{
           return (
           <div className="container-form-data" key={index}>
