@@ -1,13 +1,5 @@
 import { devToolsEnhancer } from "redux-devtools-extension";
 import { createStore } from "redux";
+import reducers from "./reducers/index.js";
 
-const initialState = {
-    
-  };
-
-  const reducer = (state = initialState, action) => {
-
-  };
-  
-  export default createStore(reducer, devToolsEnhancer());
-  
+export default createStore(reducers, devToolsEnhancer());
