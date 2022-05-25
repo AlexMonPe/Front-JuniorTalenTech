@@ -5,6 +5,7 @@ import {
   HANDLE_INPUT,
   HANDLE_TRAINING,
   REMOVE_EXPERIENCE,
+  REMOVE_TRAINING,
 } from "../typesVar.js";
 
 const initialState = {
@@ -90,15 +91,24 @@ export const candidateReducer = (state = initialState, action) => {
 
   if (action.type === ADD_TRAINING) {
     let newTraining = {
-      company_name: "",
-      work_name: "",
-      functions: "",
-      start_year: "",
-      finish_year: "",
-    };
+        level: "",
+        specialty: "",
+        center: "",
+        start_year: "",
+        finish_year: "",
+      };
     return {
       ...state,
       training: state.training.concat([newTraining]),
+    };
+  }
+
+  if (action.type === REMOVE_TRAINING) {
+    let trainData = [...state.training];
+    if (trainData.length > 1) trainData.splice(action.payload, 1);
+    return {
+      ...state,
+      training: trainData,
     };
   }
   return state;
