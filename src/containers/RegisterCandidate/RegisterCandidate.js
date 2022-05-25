@@ -1,7 +1,5 @@
 import { useState } from "react";
-import Select from "../../components/Select/Select.js";
 import { apiConsumer } from "../../services/apiConsumer.js";
-import Input from "../../components/Input/Input.js";
 import { useDispatch, useSelector } from "react-redux";
 import actionCreator from "../../store/actionTypes.js";
 import { ADD_EXPERIENCE, HANDLE_EXPERIENCE, HANDLE_INPUT, REMOVE_EXPERIENCE } from "../../store/typesVar.js";
@@ -13,43 +11,6 @@ const RegisterCandidate = () => {
 
   const [error, setError] = useState("");
 
-  // const [data, setData] = useState({
-  //   name: '',
-  //   surname: '',
-  //   email: '',
-  //   password: '',
-  //   born_date: '',
-  //   phone_number: '',
-  //   city: '',
-  //   title: '',
-  //   training: [
-  //     {
-  //       level: '',
-  //       specialty: '',
-  //       center: '',
-  //       start_year: '',
-  //       finish_year: '',
-  //     },
-  //   ],
-  //   abilities: [''],
-  //   languages: [
-  //     {
-  //       language_name: '',
-  //       language_level: '',
-  //     },
-  //   ],
-  // })
-
-  // const [experiences, setExperiences] = useState([
-  //     {
-  //       company_name: '',
-  //       work_name: '',
-  //       functions: '',
-  //       start_year: '',
-  //       finish_year: '',
-  //     },
-  //   ]);
-
   const handleInputChange = (event) => {
 
     let inputData = {...formData, 
@@ -57,48 +18,27 @@ const RegisterCandidate = () => {
     };
     
     dispatch(actionCreator(HANDLE_INPUT, inputData))
-    // setData({
-    //     ...data,
-    //     [event.target.name] : event.target.value
-    // })
 }
 console.log('recarga')
 const handleExperienceChange = (index, event) => {
   let expData = [...experiences];
   expData[index][event.target.name] = event.target.value;
   dispatch(actionCreator(HANDLE_EXPERIENCE, expData))
-  
-  // setExperiences(expData);
+
 };
 
 const addExperience = (event) =>{
   event.preventDefault();
-  // let newExperience = {
-  //   company_name: '',
-  //   work_name: '',
-  //   functions: '',
-  //   start_year: '',
-  //   finish_year: '',
-  // }
   dispatch(actionCreator(ADD_EXPERIENCE))
-  // setExperiences([...experiences, newExperience])
 }
 
 const removeExperience = (index,event) => {
   event.preventDefault();
   dispatch(actionCreator(REMOVE_EXPERIENCE, index))
-// let expData = [...experiences];
-// if (expData.length > 1) expData.splice(index,1);
-// setExperiences(expData)
-
 }
 
   const registerSubmit = async (event) => {
     event.preventDefault();
-    // setData({...data, experience: experiences})
-    // console.log(data, 'dataastate')
-    // console.log(experiences, 'experiences')
-
     try {
       console.log(formData, 'formulario completo')
       const candidateCreated = await apiConsumer.registerCandidate(formData);
@@ -195,28 +135,28 @@ const removeExperience = (index,event) => {
                 <button className="btn btn-secondary mb-5" onClick={addExperience}><i className="bi bi-plus-lg"></i></button>
                 <button className="btn btn-secondary mb-5" onClick={(e) => removeExperience(index, e)}><i className="bi bi-dash-lg"></i></button>
                 <div className="form-floating mb-4 col-12 col-sm-5">
-                  <input type="text" className="form-control" id="company_name" name="company_name" placeholder="Nombre empresa" value={experience.company_name} onChange={event=>handleExperienceChange(index,event)}/>
+                  <input type="text" className="form-control" id="company_name" name="company_name" placeholder="Nombre empresa" onChange={event=>handleExperienceChange(index,event)}/>
                   <label htmlFor="floatingInput ">Nombre empresa</label>
                 </div>
                 <div className="form-floating mb-4 col-12 col-sm-5">
-                  <input type="text" className="form-control" id="work_name" name="work_name" placeholder="Puesto de trabajo"  value={experience.work_name} onChange={event=>handleExperienceChange(index,event)}/>
+                  <input type="text" className="form-control" id="work_name" name="work_name" placeholder="Puesto de trabajo" onChange={event=>handleExperienceChange(index,event)}/>
                   <label htmlFor="floatingInput">Puesto de trabajo</label>
                 </div>
                 <div className="form-floating mb-4 col-11">
                   <div className="form-floating">
-                    <textarea className="form-control" placeholder="Funciones" id="functions" name="functions" style={{ height: "11em" }} value={experience.functions} onChange={event=>handleExperienceChange(index,event)}
+                    <textarea className="form-control" placeholder="Funciones" id="functions" name="functions" style={{ height: "11em" }}  onChange={event=>handleExperienceChange(index,event)}
                     ></textarea>
                     <label htmlFor="floatingTextarea">Funciones</label>
                   </div>
                 </div>
                 <div className="form-floating mb-4 col-10 col-sm-11 col-md-5">
-                  <input type="text" className="form-control" id="start_year_ex" placeholder="año" name="start_year" pattern="^[0-9]+$" minLength={4} maxLength={4} value={experience.start_year} onChange={event=>handleExperienceChange(index,event)}/>
+                  <input type="text" className="form-control" id="start_year_ex" placeholder="año" name="start_year" pattern="^[0-9]+$" minLength={4} maxLength={4} onChange={event=>handleExperienceChange(index,event)}/>
                   <label htmlFor="floatingInput">
                     Año de inicio ( Ejemplo: 2008 )
                   </label>
                 </div>
                 <div className="form-floating mb-4 col-10 col-sm-11 col-md-5">
-                  <input type="text" className="form-control" id="finish_year_ex" placeholder="año" name="finish_year" pattern="^[0-9]+$" minLength={4} maxLength={4} value={experience.finish_year} onChange={event=>handleExperienceChange(index,event)}/>
+                  <input type="text" className="form-control" id="finish_year_ex" placeholder="año" name="finish_year" pattern="^[0-9]+$" minLength={4} maxLength={4} onChange={event=>handleExperienceChange(index,event)}/>
                   <label htmlFor="floatingInput startDate">
                     Año de fin ( Ejemplo: 2021 )
                   </label>
