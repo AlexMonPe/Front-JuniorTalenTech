@@ -1,10 +1,13 @@
 import {
   ADD_EXPERIENCE,
+  ADD_LANGUAGE,
   ADD_TRAINING,
   HANDLE_EXPERIENCE,
   HANDLE_INPUT,
+  HANDLE_LANGUAGE,
   HANDLE_TRAINING,
   REMOVE_EXPERIENCE,
+  REMOVE_LANGUAGE,
   REMOVE_TRAINING,
 } from "../typesVar.js";
 
@@ -19,12 +22,6 @@ const initialState = {
     city: "",
     title: "",
     abilities: [""],
-    languages: [
-      {
-        language_name: "",
-        language_level: "",
-      },
-    ],
   },
   experience: [
     {
@@ -42,6 +39,12 @@ const initialState = {
       center: "",
       start_year: "",
       finish_year: "",
+    },
+  ],
+  languages: [
+    {
+      language_name: "",
+      language_level: "",
     },
   ],
 };
@@ -109,6 +112,33 @@ export const candidateReducer = (state = initialState, action) => {
     return {
       ...state,
       training: trainData,
+    };
+  }
+
+  if (action.type === HANDLE_LANGUAGE) {
+    return {
+      ...state,
+      languages: action.payload,
+    };
+  }
+
+  if (action.type === ADD_LANGUAGE) {
+    let newLanguage = {
+        language_name: "",
+        language_level: "",
+      };
+    return {
+      ...state,
+      languages: state.languages.concat([newLanguage]),
+    };
+  }
+
+  if (action.type === REMOVE_LANGUAGE) {
+    let langData = [...state.languages];
+    if (langData.length > 1) langData.splice(action.payload, 1);
+    return {
+      ...state,
+      languages: langData,
     };
   }
   return state;
