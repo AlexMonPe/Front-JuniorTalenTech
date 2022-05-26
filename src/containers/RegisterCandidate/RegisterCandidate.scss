@@ -22,8 +22,6 @@ form {
     flex-wrap: wrap !important;
     align-content: center;
     padding: 2em;
-    // margin-right: 39px;
-    // max-width: 355px;
     button {
       border: none;
       display: flex;
@@ -55,7 +53,25 @@ form {
   .skills-lang {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content: space-around;
+    .skills{
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      padding: 2em;
+      button {
+        border: none;
+        display: flex;
+        width: 2em;
+        height: 2em;
+        justify-content: center;
+        align-items: center;
+      }
+      h2{
+        height: 1em;
+      }
+    }
   }
 }
 .warning {
