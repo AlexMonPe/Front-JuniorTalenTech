@@ -208,7 +208,7 @@ return (
         </div>
         );
       })}
-      <div className="skills-lang">
+      <div className="skills-lang col-8">
         <div className="lang container-form-data col-12 col-md-6 mb-5">
           <h2 className="col-12 mb-3 text-center">Idiomas</h2>
           <div className="form-floating mb-5 d-flex align-items-center">
@@ -234,9 +234,10 @@ return (
           }))}
       </div>
       <div className="skills container-form-data col-12 col-md-5 mb-5">
-        <h2 className="col-10 mb-5 text-center">Habilidades</h2>
-        <div className="form-floating col-10">
+        <h2 className="col-12 mb-3 text-center">Habilidades</h2>
+        <div className="form-floating d-flex align-items-center">
           <input type="text" className="form-control" id="abilities" placeholder="Habilidades" name="abilities" onBlur={handleInputChange}/>
+          <button className="btn btn-secondary m-2" onClick={addLanguage}><i className="bi bi-plus-lg"></i></button>
           <label htmlFor="floatingInput ">Habilidades</label>
         </div>
       </div>
