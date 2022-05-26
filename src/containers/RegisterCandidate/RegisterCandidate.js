@@ -20,12 +20,10 @@ const RegisterCandidate = () => {
     };
     dispatch(actionCreator(HANDLE_INPUT, inputData))
 }
-  console.log('recarga')
   const handleExperienceChange = (index, event) => {
     let expData = [...experiences];
     expData[index][event.target.name] = event.target.value;
     dispatch(actionCreator(HANDLE_EXPERIENCE, expData))
-
   };
   const handleTrainingChange = (index,event) =>{
     let trainData = [...training];
@@ -33,10 +31,11 @@ const RegisterCandidate = () => {
     dispatch(actionCreator(HANDLE_TRAINING, trainData))
   }
 
-  const handleLanguageChange = (index,event) =>{
-    let LangData = [...languages];
-    LangData[index][event.target.name] = event.target.value;
-    dispatch(actionCreator(HANDLE_LANGUAGE, LangData))
+  const handleLanguageChange = (event) =>{
+    const langData = [...languages];
+    const index = langData.length-1;
+    langData[index][event.target.name] = event.target.value
+    dispatch(actionCreator(HANDLE_LANGUAGE, langData))
   }
 
   const addTraining = (event) =>{
@@ -81,14 +80,13 @@ const RegisterCandidate = () => {
       console.log(error, "Error creating candidate in frontend");
     }
   };
-
 return (
-  <div className="p-md-5 d-flex justify-content-center">
-    <form className="row g-5 p-5" onSubmit={(e)=>registerSubmit(e)}>
-      <div className="container-form-data .flex-sm-column">
+  <div className="p-5">
+    <form className="" onSubmit={(e)=>registerSubmit(e)}>
+      <div className="container-form-data .flex-sm-column mb-5">
         <h2 className="col-10 mb-5 text-center">Datos personales</h2>
 
-        <div className="form-floating mb-4 col-10 col-sm-4">
+        <div className="form-floating mb-4 col-10 col-sm-4 col-lg-5">
           <input type="text" className="form-control" id="name" placeholder="nombre" pattern="[a-zA-Z]{2,254}" name="name" onBlur={handleInputChange} />
           <label htmlFor="floatingInput ">Nombre</label>
         </div>
@@ -96,11 +94,11 @@ return (
           <input type="text" className="form-control" id="surname" placeholder="apellido" name="surname" pattern="[a-zA-Z]{2,254}" onBlur={handleInputChange}/>
           <label htmlFor="floatingInput">Apellido</label>
         </div>
-        <div className="form-floating mb-4 col-10 col-sm-5">
+        <div className="form-floating mb-4 col-10 col-sm-5 col-lg-6">
           <input type="email" className="form-control" id="email" name="email" placeholder="example@example.com" onBlur={handleInputChange} />
           <label htmlFor="floatingInput">Email</label>
         </div>
-        <div className="form-floating mb-4 col-10 col-sm-5">
+        <div className="form-floating mb-4 col-10 col-sm-5 col">
           <input type="password" className="form-control" id="password" name="password" placeholder="contraseña" minLength={6} onBlur={handleInputChange} required
           />
           <label htmlFor="floatingInput">Contraseña</label>
@@ -109,11 +107,11 @@ return (
           <input type="text" className="form-control" id="city" placeholder="ciudad" name="city" pattern="[a-zA-Z]{2,254}" onBlur={handleInputChange}/>
           <label htmlFor="floatingInput">Ciudad</label>
         </div>
-        <div className="form-floating mb-4 col-10 col-sm-6 col-lg-3">
+        <div className="form-floating mb-4 col-10 col-sm-6 col-lg-4">
           <input type="tel" name="phone_number" className="form-control" id="phone_number" minLength={9} maxLength={9} placeholder="telefono" onBlur={handleInputChange}/>
           <label htmlFor="floatingInput">Teléfono</label>
         </div>
-        <div className="form-floating mb-4 col-10 col-sm-11 col-md-4 col-lg-6">
+        <div className="form-floating mb-4 col-10 col-sm-11 col-md-4 col-lg-4">
           <input type="date" className="form-control" id="born_date" placeholder="dd/mm/aaaa" name="born_date" onBlur={handleInputChange}/>
           <label htmlFor="floatingInput startDate">Fecha de nacimiento</label>
         </div>
@@ -125,11 +123,7 @@ return (
       {training.map((training, index)=>{
         return (
         <div className="container-form-data mb-5" key={index}>
-          <h2 className="col-12 col-sm-6 mb-4 text-center">Formación</h2>
-          <div>
-            <button className="btn btn-secondary mb-4 m-2" onClick={addTraining}><i className="bi bi-plus-lg"></i></button>
-            <button className="btn btn-secondary mb-4 m-2" onClick={(e) => removeTraining(index, e)}><i className="bi bi-dash-lg"></i></button>
-          </div>
+          <h2 className="col-12 mb-4 text-center">Formación</h2>
           <div className="form-floating mb-4 col-10 col-sm-5">
             <select className="form-select" id="floatingSelect" aria-label="Floating label select example" name="level" value={training.level} onChange={event=>handleTrainingChange(index,event)}>
               <option value="Selecciona">Selecciona nivel</option>
@@ -167,6 +161,10 @@ return (
               Año de fin ( Ejemplo: 2021 )
             </label>
           </div>
+          <div>
+            <button className="btn btn-secondary m-2" onClick={addTraining}>Añadir formación</button>
+            <button className="btn btn-secondary m-2" onClick={(e) => removeTraining(index, e)}>Eliminar</button>
+          </div>
       </div>
         );
         
@@ -174,12 +172,8 @@ return (
       
       {experiences.map((experience, index)=>{
         return (
-        <div className="container-form-data" key={index}>
-              <h2 className="col-12 mb-4 text-center col-sm-6">Experiencia</h2>
-              <div className="">
-                <button className="btn btn-secondary mb-4 m-2" onClick={addExperience}><i className="bi bi-plus-lg"></i></button>
-                <button className="btn btn-secondary mb-4 m-2" onClick={(e) => removeExperience(index, e)}><i className="bi bi-dash-lg"></i></button>
-              </div>
+        <div className="container-form-data col-12 mb-5" key={index}>
+              <h2 className="col-12 mb-4 text-center">Experiencia</h2>
               <div className="form-floating mb-4 col-12 col-sm-5">
                 <input type="text" className="form-control" id="company_name" name="company_name" placeholder="Nombre empresa" value={experience.company_name} onChange={event=>handleExperienceChange(index,event)}/>
                 <label htmlFor="floatingInput ">Nombre empresa</label>
@@ -207,49 +201,54 @@ return (
                   Año de fin ( Ejemplo: 2021 )
                 </label>
               </div>
+              <div className="">
+                <button className="btn btn-secondary  m-2" onClick={addExperience}>Añadir experiencia</button>
+                <button className="btn btn-secondary  m-2" onClick={(e) => removeExperience(index, e)}>Eliminar</button>
+              </div>
         </div>
         );
-        
       })}
-      <div className="lang-skills col-12">
-      {languages.map((language, index)=>{
-        return (
-          <div className="container-form-data mb-5 col-12 col-md-6" key={index}>
-            <h2 className="col-12 mb-3 text-center col-md-6">Idiomas</h2>
-            <div className="d-flex">
-              <button className="btn btn-secondary m-2 mb-4" onClick={addLanguage}><i className="bi bi-plus-lg"></i></button>
-              <button className="btn btn-secondary m-2 mb-4" onClick={event => removeLanguage(index, event)}><i className="bi bi-dash-lg"></i></button>
-            </div>
-            <div className="form-floating col-11 mb-5">
-              <input type="text" className="form-control" id="language_name" placeholder="Idioma" name="language_name" onChange={event=>handleLanguageChange(index,event)}/>
-              <label htmlFor="floatingInput ">Idioma</label>
-            </div>
-            <div className="form-floating mb-4 col-11">
-              <select className="form-select" id="level" aria-label="Floating label select example" name="level" onChange={event=>handleLanguageChange(index,event)}>
-                <option value="Basico">Basico</option>
-                <option value="Intermedio">Intermedio</option>
-                <option value="Avanzado">Avanzado</option>
-              </select>
-              <label htmlFor="floatingSelect">Nivel</label>
-            </div>
+      <div className="skills-lang">
+        <div className="lang container-form-data col-12 col-md-6 mb-5">
+          <h2 className="col-12 mb-3 text-center">Idiomas</h2>
+          <div className="form-floating mb-5 d-flex align-items-center">
+            <input type="text" className="form-control" id="language_name" placeholder="idioma" name="language_name" onBlur={handleLanguageChange}/>
+            <button className="btn btn-secondary m-2" onClick={addLanguage}><i className="bi bi-plus-lg"></i></button>
+            <label htmlFor="floatingInput ">Idioma</label>
           </div>
-        );
-      })}
+          <div className="form-floating mb-4 col-11">
+            <select className="form-select" id="language_level" aria-label="Floating label select example" name="language_level" onBlur={handleLanguageChange}>
+              <option value="selecciona">Selecciona nivel</option>
+              <option value="Basico">Basico</option>
+              <option value="Intermedio">Intermedio</option>
+              <option value="Avanzado">Avanzado</option>
+            </select>
+            <label htmlFor="floatingSelect">Nivel</label>
+          </div>
+          {languages && (languages.map((language, index)=>{
+          return (
+            <div className="bubble-lang" key={index}>
+              <span>{language.language_name}</span>
+              <button onClick={event => removeLanguage(index, event)}><i className="bi bi-x"></i></button>
+            </div>)
+          }))}
       </div>
-      <div className="container-form-data mb-5 col-12 col-md-5">
+      <div className="skills container-form-data col-12 col-md-5 mb-5">
         <h2 className="col-10 mb-5 text-center">Habilidades</h2>
         <div className="form-floating col-10">
           <input type="text" className="form-control" id="abilities" placeholder="Habilidades" name="abilities" onBlur={handleInputChange}/>
           <label htmlFor="floatingInput ">Habilidades</label>
         </div>
       </div>
-      <div className="text-center">
+      </div>
+      
+      <div className="text-center col-5">
         {error && <div className="warning col-5 mx-auto mb-4">{error}</div>}
         <input className="btn btn-outline-info mb-4 col-4 p-2" type="submit" value="Register"/>
       </div>
     </form>
   </div>
   );
-};
+}
 
 export default RegisterCandidate;
