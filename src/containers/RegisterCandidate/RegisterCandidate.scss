@@ -1,4 +1,7 @@
 form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   .container-form-data {
     display: flex;
     box-shadow: 0px 0px 15px 6px $box-shadow-gray;
@@ -6,21 +9,53 @@ form {
     padding: 3em;
     flex-wrap: wrap !important;
     max-width: 750px;
+    button {
+      background-color: $btn-color;
+      &:hover {
+        background-color: $btn-hover;
+      }
+    }
   }
-  .lang-skills {
-    padding: 0;
+  .lang {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap !important;
     align-content: center;
-    max-width: 750px;
+    padding: 2em;
+    // margin-right: 39px;
+    // max-width: 355px;
     button {
+      border: none;
       display: flex;
       width: 2em;
       height: 2em;
       justify-content: center;
       align-items: center;
     }
+  }
+  .bubble-lang {
+    background-color: #0364f4;
+    width: 6em;
+    height: 2em;
+    display: flex;
+    border-radius: 9px;
+    align-items: center;
+    justify-content: flex-end;
+    color: white;
+    margin-bottom: 10px;
+    button {
+      border: none;
+      color: white;
+      background-color: #ffffff00;
+      &:hover {
+        background-color: #ffffff00;
+      }
+    }
+  }
+  .skills-lang {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
   }
 }
 .warning {
