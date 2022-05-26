@@ -12,17 +12,7 @@ import {
 } from "../typesVar.js";
 
 const initialState = {
-  form: {
-    name: "",
-    surname: "",
-    email: "",
-    password: "",
-    born_date: "",
-    phone_number: "",
-    city: "",
-    title: "",
-    abilities: [""],
-  },
+  form: {},
   experience: [
     {
       company_name: "",
@@ -41,12 +31,10 @@ const initialState = {
       finish_year: "",
     },
   ],
-  languages: [
-    {
-      language_name: "",
-      language_level: "",
-    },
-  ],
+  languages: [{
+    language_name: "",
+    language_level: "",
+  },],
 };
 
 export const candidateReducer = (state = initialState, action) => {
@@ -94,12 +82,12 @@ export const candidateReducer = (state = initialState, action) => {
 
   if (action.type === ADD_TRAINING) {
     let newTraining = {
-        level: "",
-        specialty: "",
-        center: "",
-        start_year: "",
-        finish_year: "",
-      };
+      level: "",
+      specialty: "",
+      center: "",
+      start_year: "",
+      finish_year: "",
+    };
     return {
       ...state,
       training: state.training.concat([newTraining]),
@@ -124,9 +112,10 @@ export const candidateReducer = (state = initialState, action) => {
 
   if (action.type === ADD_LANGUAGE) {
     let newLanguage = {
-        language_name: "",
-        language_level: "",
-      };
+      language_name: "",
+      language_level: "",
+    };
+    console.log(action.payload, 'payload')
     return {
       ...state,
       languages: state.languages.concat([newLanguage]),
@@ -135,7 +124,7 @@ export const candidateReducer = (state = initialState, action) => {
 
   if (action.type === REMOVE_LANGUAGE) {
     let langData = [...state.languages];
-    if (langData.length > 1) langData.splice(action.payload, 1);
+    langData.splice(action.payload,1);
     return {
       ...state,
       languages: langData,
