@@ -208,7 +208,7 @@ return (
         </div>
         );
       })}
-      <div className="skills-lang col-8">
+      <div className="skills-lang col-11 col-md-12 col-lg-11 col-xl-8 col-xxl-6">
         <div className="lang container-form-data col-12 col-md-6 mb-5">
           <h2 className="col-12 mb-3 text-center">Idiomas</h2>
           <div className="form-floating mb-5 d-flex align-items-center">
