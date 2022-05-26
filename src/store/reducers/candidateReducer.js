@@ -1,11 +1,14 @@
 import {
+  ADD_ABILITY,
   ADD_EXPERIENCE,
   ADD_LANGUAGE,
   ADD_TRAINING,
+  HANDLE_ABILITY,
   HANDLE_EXPERIENCE,
   HANDLE_INPUT,
   HANDLE_LANGUAGE,
   HANDLE_TRAINING,
+  REMOVE_ABILITY,
   REMOVE_EXPERIENCE,
   REMOVE_LANGUAGE,
   REMOVE_TRAINING,
@@ -31,10 +34,13 @@ const initialState = {
       finish_year: "",
     },
   ],
-  languages: [{
-    language_name: "",
-    language_level: "",
-  },],
+  languages: [
+    {
+      language_name: "Escribe el idioma",
+      language_level: "",
+    },
+  ],
+  abilities: ["Escribe tu habilidad"],
 };
 
 export const candidateReducer = (state = initialState, action) => {
@@ -112,10 +118,9 @@ export const candidateReducer = (state = initialState, action) => {
 
   if (action.type === ADD_LANGUAGE) {
     let newLanguage = {
-      language_name: "",
+      language_name: "Escribe el idioma",
       language_level: "",
     };
-    console.log(action.payload, 'payload')
     return {
       ...state,
       languages: state.languages.concat([newLanguage]),
@@ -124,10 +129,34 @@ export const candidateReducer = (state = initialState, action) => {
 
   if (action.type === REMOVE_LANGUAGE) {
     let langData = [...state.languages];
-    langData.splice(action.payload,1);
+    langData.splice(action.payload, 1);
     return {
       ...state,
       languages: langData,
+    };
+  }
+
+  if (action.type === HANDLE_ABILITY) {
+    return {
+      ...state,
+      abilities: action.payload,
+    };
+  }
+
+  if (action.type === ADD_ABILITY) {
+    let newAbility = "Escribe tu habilidad";
+    return {
+      ...state,
+      abilities: state.abilities.concat([newAbility]),
+    };
+  }
+
+  if (action.type === REMOVE_ABILITY) {
+    let abilityData = [...state.abilities];
+    abilityData.splice(action.payload, 1);
+    return {
+      ...state,
+      abilities: abilityData,
     };
   }
   return state;
