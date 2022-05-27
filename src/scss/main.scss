@@ -9,13 +9,15 @@
 @import "../../node_modules/bootstrap/scss/mixins";
 @import "../../node_modules/bootstrap/scss/root";
 
-// Create your own map
-$custom-colors: (
-  "custom-color": #900
-);
+@font-face {
+  font-family: calvino;
+  src: url('../../public/fonts/Calvino.ttf');
+}
 
-// Merge the maps
-$theme-colors: map-merge($theme-colors, $custom-colors);
+@font-face {
+  font-family: newYork;
+  src: url('../../public/fonts/NewYork.otf');
+}
 
 //Components
 
