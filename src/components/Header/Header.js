@@ -69,18 +69,30 @@ export const Header = () => {
                     Editar perfil
                   </a>
                 </li>
-                <li>
+                {localStorage.getItem('id') 
+                ? (<li>
                   <a
                     className="dropdown-item"
                     onClick={() => {
                       dispatch(actionCreator(USER_LOGOUT));
                       popUp("Has cerrado sesión");
-                      setTimeout(() => navigate("/login"), 3500);
+                      setTimeout(() => navigate("/login"), 3000);
                     }}
                   >
                     Cerrar sesión
                   </a>
-                </li>
+                </li>)
+                : (<li>
+                  <a
+                    className="dropdown-item"
+                    onClick={() => {
+                      navigate("/login");
+                    }}
+                  >
+                    Iniciar sesión
+                  </a>
+                </li>)}
+                
               </ul>
             </li>
           </ul>
