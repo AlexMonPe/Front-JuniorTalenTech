@@ -9,10 +9,10 @@
 }
 
 .container-login-data{
-    background-color: #e8f0fef0;
+    background-color: $bg-color-form;
     display: flex;
     flex-direction: column;
-    box-shadow: 0px 0px 15px 6px #a6abd9;
+    box-shadow: 0px 0px 15px 6px $box-shadow-form-data;
     align-content: center;
     padding: 4em;
     max-width: 800px;

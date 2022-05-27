@@ -49,7 +49,7 @@ const Login = () => {
         </div>
         <div className="text-center">
           <Input
-            className="btn btn-outline-info mb-4 col-8 p-2"
+            className="btn btn-outline-info mb-4 text-dark col-8 p-2"
             type="submit"
             value="Sign in"
           />
