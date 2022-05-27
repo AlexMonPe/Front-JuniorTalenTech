@@ -1,7 +1,9 @@
 import Input from "../../components/Input/Input.js";
+import { usePopup } from "../../hooks/usePopup.js";
 import { apiConsumer } from "../../services/apiConsumer.js";
 
 const Login = () => {
+  const popUp = usePopup();
   const loginSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -15,6 +17,7 @@ const Login = () => {
       localStorage.setItem('token',loginUser.token)
       localStorage.setItem('id',loginUser.id)
       localStorage.setItem('role',loginUser.role)
+      popUp('Bienvenido a JuniorTalenTech')
 
     } catch (error) {
       console.log(error);
