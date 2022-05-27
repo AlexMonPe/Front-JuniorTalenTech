@@ -96,41 +96,41 @@ const RegisterCandidate = () => {
     }
   };
 return (
-  <div className="p-5">
+  <div className="p-5 register-candidate-container">
     <form className="" onSubmit={(e)=>registerSubmit(e)}>
       <div className="container-form-data .flex-sm-column mb-5">
         <h2 className="col-10 mb-5 text-center">Datos personales</h2>
 
-        <div className="form-floating mb-4 col-10 col-sm-4 col-lg-5">
+        <div className="form-floating mb-4 col-12 col-sm-4 col-lg-5">
           <input type="text" className="form-control" id="name" placeholder="nombre" pattern="[a-zA-Z]{2,254}" name="name" onBlur={handleInputChange} />
           <label htmlFor="floatingInput ">Nombre</label>
         </div>
-        <div className="form-floating mb-4 col-10 col-sm-6">
+        <div className="form-floating mb-4 col-12 col-sm-6">
           <input type="text" className="form-control" id="surname" placeholder="apellido" name="surname" pattern="[a-zA-Z]{2,254}" onBlur={handleInputChange}/>
           <label htmlFor="floatingInput">Apellido</label>
         </div>
-        <div className="form-floating mb-4 col-10 col-sm-5 col-lg-6">
+        <div className="form-floating mb-4 col-12 col-sm-5 col-lg-6">
           <input type="email" className="form-control" id="email" name="email" placeholder="example@example.com" onBlur={handleInputChange} />
           <label htmlFor="floatingInput">Email</label>
         </div>
-        <div className="form-floating mb-4 col-10 col-sm-5 col">
+        <div className="form-floating mb-4 col-12 col-sm-5 col">
           <input type="password" className="form-control" id="password" name="password" placeholder="contraseña" minLength={6} onBlur={handleInputChange} required
           />
           <label htmlFor="floatingInput">Contraseña</label>
         </div>
-        <div className="form-floating mb-4 col-10 col-sm-4 col-lg-2">
+        <div className="form-floating mb-4 col-12 col-sm-4 col-lg-2">
           <input type="text" className="form-control" id="city" placeholder="ciudad" name="city" pattern="[a-zA-Z]{2,254}" onBlur={handleInputChange}/>
           <label htmlFor="floatingInput">Ciudad</label>
         </div>
-        <div className="form-floating mb-4 col-10 col-sm-6 col-lg-4">
+        <div className="form-floating mb-4 col-12 col-sm-6 col-lg-4">
           <input type="tel" name="phone_number" className="form-control" id="phone_number" minLength={9} maxLength={9} placeholder="telefono" onBlur={handleInputChange}/>
           <label htmlFor="floatingInput">Teléfono</label>
         </div>
-        <div className="form-floating mb-4 col-10 col-sm-11 col-md-4 col-lg-4">
+        <div className="form-floating mb-4 col-12 col-sm-11 col-md-4 col-lg-4">
           <input type="date" className="form-control" id="born_date" placeholder="dd/mm/aaaa" name="born_date" onBlur={handleInputChange}/>
           <label htmlFor="floatingInput startDate">Fecha de nacimiento</label>
         </div>
-        <div className="form-floating col-10 col-sm-11 col-md-6">
+        <div className="form-floating col-12 col-sm-11 col-md-6">
           <input type="text" className="form-control" id="title" name="title" placeholder="Frontend Developer" onBlur={handleInputChange}/>
           <label htmlFor="floatingInput">Titular de tu profesión</label>
         </div>
@@ -139,7 +139,7 @@ return (
         return (
         <div className="container-form-data mb-5" key={index}>
           <h2 className="col-12 mb-4 text-center">Formación</h2>
-          <div className="form-floating mb-4 col-10 col-sm-5">
+          <div className="form-floating mb-4 col-12 col-sm-5">
             <select className="form-select" id="floatingSelect" aria-label="Floating label select example" name="level" value={training.level} onChange={event=>handleTrainingChange(index,event)}>
               <option value="Selecciona">Selecciona nivel</option>
               <option value="Educacion Secundaria Obligatoria">Educacion Secundaria Obligatoria</option>
@@ -154,30 +154,30 @@ return (
             </select>
             <label htmlFor="floatingSelect">Nivel de estudios</label>
           </div>
-          <div className="form-floating mb-4 col-10 col-sm-5">
+          <div className="form-floating mb-4 col-12 col-sm-5">
             <input type="text" className="form-control" id="specialty" name="specialty" value={training.specialty} placeholder="Especialidad" onChange={event=>handleTrainingChange(index,event)}/>
             <label htmlFor="floatingInput">Especialidad</label>
           </div>
-          <div className="form-floating mb-4 col-10 col-sm-11">
+          <div className="form-floating mb-4 col-12 col-sm-11">
             <div className="form-floating">
               <input className="form-control" placeholder="Nombre centro" id="center" name="center" value={training.center} onChange={event=>handleTrainingChange(index,event)}/>
               <label htmlFor="floatingTextarea">Centro / Universidad</label>
             </div>
           </div>
-          <div className="form-floating mb-4 col-10 col-sm-11 col-md-5 col-lg-5">
+          <div className="form-floating mb-4 col-12 col-sm-11 col-md-5 col-lg-5">
             <input type="text" className="form-control" id="start_year" placeholder="año" name="start_year" value={training.start_year} pattern="^[0-9]+$" minLength={4} maxLength={4} onChange={event=>handleTrainingChange(index,event)}/>
             <label htmlFor="floatingInput">
-              Año de inicio ( Ejemplo: 2008 )
+              Año inicio ( Ej: 2008 )
             </label>
           </div>
-          <div className="form-floating mb-4 col-10 col-sm-11 col-md-5 col-lg-5">
+          <div className="form-floating mb-4 col-12 col-sm-11 col-md-5 col-lg-5">
             <input type="text" className="form-control" id="finish_year" placeholder="año" name="finish_year" value={training.finish_year} pattern="^[0-9]+$" minLength={4} maxLength={4} onChange={event=>handleTrainingChange(index,event)}/>
             <label htmlFor="floatingInput startDate">
-              Año de fin ( Ejemplo: 2021 )
+              Año fin ( Ej: 2021 )
             </label>
           </div>
           <div>
-            <button className="btn btn-secondary m-2" onClick={addTraining}>Añadir formación</button>
+            <button className="btn btn-secondary m-2" onClick={addTraining}>Añadir</button>
             <button className="btn btn-secondary m-2" onClick={(e) => removeTraining(index, e)}>Eliminar</button>
           </div>
       </div>
@@ -197,27 +197,27 @@ return (
                 <input type="text" className="form-control" id="work_name" name="work_name" placeholder="Puesto de trabajo"  value={experience.work_name} onChange={event=>handleExperienceChange(index,event)}/>
                 <label htmlFor="floatingInput">Puesto de trabajo</label>
               </div>
-              <div className="form-floating mb-4 col-11">
+              <div className="form-floating mb-4 col-12 col-sm-11">
                 <div className="form-floating">
                   <textarea className="form-control" placeholder="Funciones" id="functions" name="functions" style={{ height: "11em" }} value={experience.functions} onChange={event=>handleExperienceChange(index,event)}
                   ></textarea>
                   <label htmlFor="floatingTextarea">Funciones</label>
                 </div>
               </div>
-              <div className="form-floating mb-4 col-10 col-sm-11 col-md-5">
+              <div className="form-floating mb-4 col-12 col-sm-11 col-md-5">
                 <input type="text" className="form-control" id="start_year_ex" placeholder="año" name="start_year" pattern="^[0-9]+$" minLength={4} maxLength={4} value={experience.start_year} onChange={event=>handleExperienceChange(index,event)}/>
                 <label htmlFor="floatingInput">
-                  Año de inicio ( Ejemplo: 2008 )
+                  Año inicio ( Ej: 2008 )
                 </label>
               </div>
-              <div className="form-floating mb-4 col-10 col-sm-11 col-md-5">
+              <div className="form-floating mb-4 col-12 col-sm-11 col-md-5">
                 <input type="text" className="form-control" id="finish_year_ex" placeholder="año" name="finish_year" pattern="^[0-9]+$" minLength={4} maxLength={4} value={experience.finish_year} onChange={event=>handleExperienceChange(index,event)}/>
                 <label htmlFor="floatingInput startDate">
-                  Año de fin ( Ejemplo: 2021 )
+                  Año fin ( Ej: 2021 )
                 </label>
               </div>
               <div className="">
-                <button className="btn btn-secondary  m-2" onClick={addExperience}>Añadir experiencia</button>
+                <button className="btn btn-secondary  m-2" onClick={addExperience}>Añadir</button>
                 <button className="btn btn-secondary  m-2" onClick={(e) => removeExperience(index, e)}>Eliminar</button>
               </div>
         </div>
@@ -266,8 +266,8 @@ return (
       </div>
       
       <div className="text-center col-5">
-        {error && <div className="warning col-5 mx-auto mb-4">{error}</div>}
-        <input className="btn btn-outline-info mb-4 col-4 p-2" type="submit" value="Register"/>
+        {error && <div className="warning col-12 col-md-10 mx-auto mb-5">{error}</div>}
+        <input className="btn btn-outline-info mb-4 col-12 col-md-6 p-2" type="submit" value="Register"/>
       </div>
     </form>
   </div>

@@ -1,16 +1,25 @@
+.register-candidate-container{
+  background-image: url(../../../public/images/code-rain-bg.jpg);
+  min-height: 100vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
 form {
   display: flex;
   flex-direction: column;
   align-items: center;
   .container-form-data {
     display: flex;
-    box-shadow: 0px 0px 15px 6px $box-shadow-gray;
+    box-shadow: 0px 0px 16px 5px $box-shadow-form-data;
+    background-color: $bg-color-form;
     justify-content: space-around;
     padding: 3em;
     flex-wrap: wrap !important;
     max-width: 750px;
     button {
       background-color: $btn-color;
+      color: black;
       &:hover {
         background-color: $btn-hover;
       }
@@ -32,21 +41,21 @@ form {
     }
   }
   .bubble {
-    background-color: #0364f4;
+    background-color: $btn-color;
     width: fit-content;
     height: fit-content;
     display: flex;
     border-radius: 9px;
     align-items: center;
     justify-content: flex-end;
-    color: white;
+    color: black;
     margin-bottom: 10px;
     button {
       border: none;
       color: white;
-      background-color: #ffffff00;
+      background-color: $bubble-bg;
       &:hover {
-        background-color: #ffffff00;
+        background-color: $bubble-bg;
       }
     }
   }
