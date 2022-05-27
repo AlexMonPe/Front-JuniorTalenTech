@@ -5,10 +5,13 @@ import RegisterCandidate from './containers/RegisterCandidate/RegisterCandidate.
 import Header from './components/Header/Header.js';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import Login from './containers/Login/Login.js';
+import { useSelector } from 'react-redux';
+import { PopUp } from './components/Popup/Popup.js';
 
 
 
 function App() {
+  const popupState = useSelector((state) => state.general.popup)
   return (
     <div className="App">
     <ErrorComponent>
@@ -18,6 +21,7 @@ function App() {
         <Route path="/registerCandidate" element={<RegisterCandidate />}></Route>
         <Route path="/login" element={<Login />}></Route>
         </Routes>
+        {!popupState.visible && <PopUp />}
       </BrowserRouter>
     </ErrorComponent>
   </div>
