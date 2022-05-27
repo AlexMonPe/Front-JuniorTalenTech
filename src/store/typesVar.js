@@ -1,3 +1,4 @@
+//Form
 export const HANDLE_INPUT = "HANDLE_INPUT";
 export const HANDLE_EXPERIENCE = "HANDLE_EXPERIENCE";
 export const ADD_EXPERIENCE = "ADD_EXPERIENCE";
@@ -11,3 +12,6 @@ export const REMOVE_LANGUAGE = "REMOVE_LANGUAGE";
 export const ADD_ABILITY = "ADD_ABILITY";
 export const HANDLE_ABILITY = "HANDLE_ABILITY";
 export const REMOVE_ABILITY = "REMOVE_ABILITY";
+//Popup
+export const SHOW_POPUP = "SHOW_POPUP";
+export const CLOSE_POPUP = "CLOSE_POPUP";
