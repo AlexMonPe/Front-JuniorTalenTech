@@ -23,10 +23,12 @@ import { Experience } from "../../components/Experience/Experience.js";
 import { Languages } from "../../components/Languages/Languages.js";
 import { Abilities } from "../../components/Abilities/Abilities.js";
 import { useNavigate } from "react-router-dom";
+import { usePopup } from "../../hooks/usePopup.js";
 
 const RegisterCandidate = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const popUp = usePopup();
   const candidateData = useSelector((state) => state.candidate);
   const formData = useSelector((state) => state.candidate.form);
   const experiences = useSelector((state) => state.candidate.experience);
@@ -115,7 +117,14 @@ const RegisterCandidate = () => {
       );
 
       candidateCreated.error ? setError(candidateCreated.error) : setError(false);
-      navigate("/login");
+
+      if (candidateCreated){
+         popUp("Te has registrado correctamente, ¡bienvenido!")
+         setTimeout(()=>navigate("/login"), 4000);
+      }else {
+        popUp(`${candidateCreated.error}`);
+      }  
+      
     } catch (error) {
       console.log(error, "Error creating candidate in frontend");
     }
@@ -131,9 +140,6 @@ const RegisterCandidate = () => {
           <Abilities handleAbilityChange={handleAbilityChange} addAbility={addAbility} removeAbility={removeAbility} />
         </div>
         <div className="text-center col-5">
-          {error && (
-            <div className="warning col-12 col-md-10 mx-auto mb-5">{error}</div>
-          )}
           <input className="btn btn-outline-info mb-4 col-12 col-md-6 p-2" type="submit" value="Register" />
         </div>
       </form>
