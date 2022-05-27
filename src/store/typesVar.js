@@ -17,3 +17,5 @@ export const SHOW_POPUP = "SHOW_POPUP";
 export const CLOSE_POPUP = "CLOSE_POPUP";
 //Error
 export const SET_ERROR = "SET_ERROR"
+//User
+export const USER_LOGOUT = "USER_LOGOUT";

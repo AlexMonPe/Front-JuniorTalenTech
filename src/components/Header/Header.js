@@ -1,9 +1,19 @@
-const Header = () => {
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { usePopup } from "../../hooks/usePopup.js";
+import actionCreator from "../../store/actionTypes.js";
+import { USER_LOGOUT } from "../../store/typesVar.js";
+
+export const Header = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const popUp = usePopup();
+
   return (
     <nav className="navbar navbar-expand-lg navbar-light ">
       <div className="container-fluid">
         <a className="navbar-brand" href="#">
-          <img className="logo" src="/images/logo.png" alt="logo"/>
+          <img className="logo" src="/images/logo.png" alt="logo" />
         </a>
         <button
           className="navbar-toggler"
@@ -20,19 +30,20 @@ const Header = () => {
           <ul className="navbar-nav">
             <li className="nav-item">
               <a className="nav-link active" aria-current="page" href="#">
-                Home
+                Inicio
+              </a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link active" aria-current="page" href="#">
+                Registrarse
               </a>
             </li>
             <li className="nav-item">
               <a className="nav-link" href="#">
-                Login
+                Buscar
               </a>
             </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#">
-                Profile
-              </a>
-            </li>
+
             <li className="nav-item dropdown">
               <a
                 className="nav-link dropdown-toggle"
@@ -42,7 +53,7 @@ const Header = () => {
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                Options
+                Opciones
               </a>
               <ul
                 className="dropdown-menu"
@@ -50,17 +61,24 @@ const Header = () => {
               >
                 <li>
                   <a className="dropdown-item" href="#">
-                    Home
+                    Inicio
                   </a>
                 </li>
                 <li>
                   <a className="dropdown-item" href="#">
-                    Edit Profile
+                    Editar perfil
                   </a>
                 </li>
                 <li>
-                  <a className="dropdown-item" href="#">
-                    Logout
+                  <a
+                    className="dropdown-item"
+                    onClick={() => {
+                      dispatch(actionCreator(USER_LOGOUT));
+                      popUp("Has cerrado sesión");
+                      setTimeout(() => navigate("/login"), 3500);
+                    }}
+                  >
+                    Cerrar sesión
                   </a>
                 </li>
               </ul>
@@ -71,5 +89,3 @@ const Header = () => {
     </nav>
   );
 };
-
-export default Header;
