@@ -4,6 +4,7 @@
 
     a{
         margin-right: 5px;
+        border-bottom: 2px solid black;
     }
     a:hover{
         background-color: rgb(199, 220, 225);
@@ -15,6 +16,9 @@
     border-bottom: 1px solid black;
     background-color: rgb(54, 210, 245);
     font-family: newYork;
+    a{
+        height: fit-content;
+    }
 }
 
 .logo{
