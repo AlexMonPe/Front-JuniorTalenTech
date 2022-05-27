@@ -14,7 +14,7 @@ export const PopUp = () => {
   return (
     <div>
       <div className="popup">
-        <p>{popupState.text}</p>
+        <span>{popupState.text}</span>
       </div>
     </div>
   );
