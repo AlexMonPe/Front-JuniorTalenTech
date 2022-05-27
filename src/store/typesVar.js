@@ -15,3 +15,5 @@ export const REMOVE_ABILITY = "REMOVE_ABILITY";
 //Popup
 export const SHOW_POPUP = "SHOW_POPUP";
 export const CLOSE_POPUP = "CLOSE_POPUP";
+//Error
+export const SET_ERROR = "SET_ERROR"

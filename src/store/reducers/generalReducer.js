@@ -1,7 +1,8 @@
-import { CLOSE_POPUP, SHOW_POPUP } from "../typesVar.js";
+import { CLOSE_POPUP, SET_ERROR, SHOW_POPUP } from "../typesVar.js";
 
 const initialState = {
   popup: { visible: false, text: "" },
+  error: "",
 };
 
 export const generalReducer = (state = initialState, action) => {
@@ -17,6 +18,11 @@ export const generalReducer = (state = initialState, action) => {
         ...state,
         popup: { visible: false },
       };
+    case SET_ERROR:
+      return {
+        ...state,
+        error: action.payload,
+      }
   }
   return state;
 };
