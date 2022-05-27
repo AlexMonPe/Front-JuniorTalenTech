@@ -6,7 +6,8 @@ import { ADD_ABILITY, ADD_EXPERIENCE, ADD_LANGUAGE, ADD_TRAINING, HANDLE_ABILITY
 import { PersonalData } from "../../components/PersonalData/PersonalData.js";
 import { Training } from "../../components/Training/Training.js";
 import { Experience } from "../../components/Experience/Experience.js";
-import { Languages } from "../../Languages/Languages.js";
+import { Languages } from "../../components/Languages/Languages.js";
+import { Abilities } from "../../components/Abilities/Abilities.js";
 
 const RegisterCandidate = () => {
   const dispatch = useDispatch();
@@ -107,23 +108,8 @@ return (
       <Experience handleExperienceChange={handleExperienceChange} addExperience={addExperience} removeExperience={removeExperience} />
       <div className="skills-lang col-11 col-md-12 col-lg-11 col-xl-8 col-xxl-6">
         <Languages handleLanguageChange={handleLanguageChange} addLanguage={addLanguage} removeLanguage={removeLanguage} />
-        <div className="skills container-form-data col-12 col-md-5 mb-5">
-          <h2 className="col-12 mb-3 text-center">Habilidades</h2>
-          <div className="form-floating d-flex align-items-center mb-3">
-            <input type="text" className="form-control" id="abilities" placeholder="Habilidades" name="abilities" onChange={handleAbilityChange}/>
-            <button className="btn btn-secondary m-2" onClick={addAbility}><i className="bi bi-plus-lg"></i></button>
-            <label htmlFor="floatingInput ">Habilidades</label>
-          </div>
-          {abilities && (abilities.map((ability, index)=>{
-            return(
-            <div className="bubble" key={index}>
-              <div className="ms-3">{ability}</div>
-              <button onClick={event => removeAbility(index, event)}><i className="bi bi-x"></i></button>
-            </div>)
-          }))}
-        </div>
+        <Abilities handleAbilityChange={handleAbilityChange} addAbility={addAbility} removeAbility={removeAbility} />
       </div>
-      
       <div className="text-center col-5">
         {error && <div className="warning col-12 col-md-10 mx-auto mb-5">{error}</div>}
         <input className="btn btn-outline-info mb-4 col-12 col-md-6 p-2" type="submit" value="Register"/>
