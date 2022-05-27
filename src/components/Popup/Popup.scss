@@ -7,9 +7,12 @@
     transition: transform 0.6s ease-in-out;
     animation: banner-in-right 0.7s;
     background-color: $btn-color;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     color: black;
     padding: 2em;
-    opacity: 0.8;
+    opacity: 0.9;
     box-shadow: 0 0 10px 7px $box-shadow-form-data;
   }
   .popup:hover {
