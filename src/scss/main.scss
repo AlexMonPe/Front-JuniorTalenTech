@@ -23,7 +23,7 @@ $theme-colors: map-merge($theme-colors, $custom-colors);
 @import "../components/Header/Header.scss";
 @import "../containers/RegisterCandidate/RegisterCandidate.scss";
 @import "../containers/Login/Login.scss";
-
+@import "../components/Popup/Popup.scss";
 //Bootstrap imports
 
 @import "../../node_modules/bootstrap/scss/bootstrap.scss";
