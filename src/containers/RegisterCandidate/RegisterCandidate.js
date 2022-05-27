@@ -8,9 +8,11 @@ import { Training } from "../../components/Training/Training.js";
 import { Experience } from "../../components/Experience/Experience.js";
 import { Languages } from "../../components/Languages/Languages.js";
 import { Abilities } from "../../components/Abilities/Abilities.js";
+import { useNavigate } from "react-router-dom";
 
 const RegisterCandidate = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const candidateData = useSelector((state) => state.candidate)
   const formData = useSelector((state) => state.candidate.form)
   const experiences = useSelector((state) => state.candidate.experience)
@@ -96,13 +98,14 @@ const RegisterCandidate = () => {
       const candidateCreated = await apiConsumer.registerCandidate(candidateData);
 
       (candidateCreated.error) ? setError(candidateCreated.error) : setError(false);
+      navigate('/login')
     } catch (error) {
       console.log(error, "Error creating candidate in frontend");
     }
   };
 return (
   <div className="p-5 register-candidate-container">
-    <form className="" onSubmit={(e)=>registerSubmit(e)}>
+    <form className="" onSubmit={event=>registerSubmit(event)}>
       <PersonalData handleInputChange={handleInputChange}/>
       <Training handleTrainingChange={handleTrainingChange} removeTraining={removeTraining} addTraining={addTraining} />
       <Experience handleExperienceChange={handleExperienceChange} addExperience={addExperience} removeExperience={removeExperience} />
