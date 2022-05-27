@@ -3,7 +3,7 @@ const Header = () => {
     <nav className="navbar navbar-expand-lg navbar-light ">
       <div className="container-fluid">
         <a className="navbar-brand" href="#">
-          JuniorTalenTech
+          <img className="logo" src="/images/logo.png" alt="logo"/>
         </a>
         <button
           className="navbar-toggler"
