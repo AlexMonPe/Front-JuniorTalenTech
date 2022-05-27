@@ -5,6 +5,7 @@ import actionCreator from "../../store/actionTypes.js";
 import { ADD_ABILITY, ADD_EXPERIENCE, ADD_LANGUAGE, ADD_TRAINING, HANDLE_ABILITY, HANDLE_EXPERIENCE, HANDLE_INPUT, HANDLE_LANGUAGE, HANDLE_TRAINING, REMOVE_ABILITY, REMOVE_EXPERIENCE, REMOVE_LANGUAGE, REMOVE_TRAINING } from "../../store/typesVar.js";
 import { PersonalData } from "../../components/PersonalData/PersonalData.js";
 import { Training } from "../../components/Training/Training.js";
+import { Experience } from "../../components/Experience.js";
 
 const RegisterCandidate = () => {
   const dispatch = useDispatch();
@@ -102,45 +103,7 @@ return (
     <form className="" onSubmit={(e)=>registerSubmit(e)}>
       <PersonalData handleInputChange={handleInputChange}/>
       <Training handleTrainingChange={handleTrainingChange} removeTraining={removeTraining} addTraining={addTraining} />
-      
-      {experiences.map((experience, index)=>{
-        return (
-        <div className="container-form-data col-12 mb-5" key={index}>
-              <h2 className="col-12 mb-4 text-center">Experiencia</h2>
-              <div className="form-floating mb-4 col-12 col-sm-5">
-                <input type="text" className="form-control" id="company_name" name="company_name" placeholder="Nombre empresa" value={experience.company_name} onChange={event=>handleExperienceChange(index,event)}/>
-                <label htmlFor="floatingInput ">Nombre empresa</label>
-              </div>
-              <div className="form-floating mb-4 col-12 col-sm-5">
-                <input type="text" className="form-control" id="work_name" name="work_name" placeholder="Puesto de trabajo"  value={experience.work_name} onChange={event=>handleExperienceChange(index,event)}/>
-                <label htmlFor="floatingInput">Puesto de trabajo</label>
-              </div>
-              <div className="form-floating mb-4 col-12 col-sm-11">
-                <div className="form-floating">
-                  <textarea className="form-control" placeholder="Funciones" id="functions" name="functions" style={{ height: "11em" }} value={experience.functions} onChange={event=>handleExperienceChange(index,event)}
-                  ></textarea>
-                  <label htmlFor="floatingTextarea">Funciones</label>
-                </div>
-              </div>
-              <div className="form-floating mb-4 col-12 col-sm-11 col-md-5">
-                <input type="text" className="form-control" id="start_year_ex" placeholder="año" name="start_year" pattern="^[0-9]+$" minLength={4} maxLength={4} value={experience.start_year} onChange={event=>handleExperienceChange(index,event)}/>
-                <label htmlFor="floatingInput">
-                  Año inicio ( Ej: 2008 )
-                </label>
-              </div>
-              <div className="form-floating mb-4 col-12 col-sm-11 col-md-5">
-                <input type="text" className="form-control" id="finish_year_ex" placeholder="año" name="finish_year" pattern="^[0-9]+$" minLength={4} maxLength={4} value={experience.finish_year} onChange={event=>handleExperienceChange(index,event)}/>
-                <label htmlFor="floatingInput startDate">
-                  Año fin ( Ej: 2021 )
-                </label>
-              </div>
-              <div className="">
-                <button className="btn btn-secondary  m-2" onClick={addExperience}>Añadir</button>
-                <button className="btn btn-secondary  m-2" onClick={(e) => removeExperience(index, e)}>Eliminar</button>
-              </div>
-        </div>
-        );
-      })}
+      <Experience handleExperienceChange={handleExperienceChange} addExperience={addExperience} removeExperience={removeExperience} />
       <div className="skills-lang col-11 col-md-12 col-lg-11 col-xl-8 col-xxl-6">
         <div className="lang container-form-data col-12 col-md-6 mb-5">
           <h2 className="col-12 mb-3 text-center">Idiomas</h2>
