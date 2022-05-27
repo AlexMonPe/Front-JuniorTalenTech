@@ -3,6 +3,7 @@ import { apiConsumer } from "../../services/apiConsumer.js";
 import { useDispatch, useSelector } from "react-redux";
 import actionCreator from "../../store/actionTypes.js";
 import { ADD_ABILITY, ADD_EXPERIENCE, ADD_LANGUAGE, ADD_TRAINING, HANDLE_ABILITY, HANDLE_EXPERIENCE, HANDLE_INPUT, HANDLE_LANGUAGE, HANDLE_TRAINING, REMOVE_ABILITY, REMOVE_EXPERIENCE, REMOVE_LANGUAGE, REMOVE_TRAINING } from "../../store/typesVar.js";
+import { PersonalData } from "../../components/PersonalData/PersonalData.js";
 
 const RegisterCandidate = () => {
   const dispatch = useDispatch();
@@ -98,43 +99,7 @@ const RegisterCandidate = () => {
 return (
   <div className="p-5 register-candidate-container">
     <form className="" onSubmit={(e)=>registerSubmit(e)}>
-      <div className="container-form-data .flex-sm-column mb-5">
-        <h2 className="col-10 mb-5 text-center">Datos personales</h2>
-
-        <div className="form-floating mb-4 col-12 col-sm-4 col-lg-5">
-          <input type="text" className="form-control" id="name" placeholder="nombre" pattern="[a-zA-Z]{2,254}" name="name" onBlur={handleInputChange} />
-          <label htmlFor="floatingInput ">Nombre</label>
-        </div>
-        <div className="form-floating mb-4 col-12 col-sm-6">
-          <input type="text" className="form-control" id="surname" placeholder="apellido" name="surname" pattern="[a-zA-Z]{2,254}" onBlur={handleInputChange}/>
-          <label htmlFor="floatingInput">Apellido</label>
-        </div>
-        <div className="form-floating mb-4 col-12 col-sm-5 col-lg-6">
-          <input type="email" className="form-control" id="email" name="email" placeholder="example@example.com" onBlur={handleInputChange} />
-          <label htmlFor="floatingInput">Email</label>
-        </div>
-        <div className="form-floating mb-4 col-12 col-sm-5 col">
-          <input type="password" className="form-control" id="password" name="password" placeholder="contraseña" minLength={6} onBlur={handleInputChange} required
-          />
-          <label htmlFor="floatingInput">Contraseña</label>
-        </div>
-        <div className="form-floating mb-4 col-12 col-sm-4 col-lg-2">
-          <input type="text" className="form-control" id="city" placeholder="ciudad" name="city" pattern="[a-zA-Z]{2,254}" onBlur={handleInputChange}/>
-          <label htmlFor="floatingInput">Ciudad</label>
-        </div>
-        <div className="form-floating mb-4 col-12 col-sm-6 col-lg-4">
-          <input type="tel" name="phone_number" className="form-control" id="phone_number" minLength={9} maxLength={9} placeholder="telefono" onBlur={handleInputChange}/>
-          <label htmlFor="floatingInput">Teléfono</label>
-        </div>
-        <div className="form-floating mb-4 col-12 col-sm-11 col-md-4 col-lg-4">
-          <input type="date" className="form-control" id="born_date" placeholder="dd/mm/aaaa" name="born_date" onBlur={handleInputChange}/>
-          <label htmlFor="floatingInput startDate">Fecha de nacimiento</label>
-        </div>
-        <div className="form-floating col-12 col-sm-11 col-md-6">
-          <input type="text" className="form-control" id="title" name="title" placeholder="Frontend Developer" onBlur={handleInputChange}/>
-          <label htmlFor="floatingInput">Titular de tu profesión</label>
-        </div>
-      </div>
+      <PersonalData handleInputChange={handleInputChange}/>
       {training.map((training, index)=>{
         return (
         <div className="container-form-data mb-5" key={index}>
