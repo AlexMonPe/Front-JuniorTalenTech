@@ -7,6 +7,7 @@
 
 .navbar-expand-lg .navbar-collapse a {
   margin-right: 5px;
+  border-bottom: 2px solid black;
 }
 
 .navbar-expand-lg .navbar-collapse a:hover {
@@ -17,6 +18,12 @@
   border-bottom: 1px solid black;
   background-color: #36d2f5;
   font-family: newYork;
+}
+
+.navbar a {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
 }
 
 .logo {
