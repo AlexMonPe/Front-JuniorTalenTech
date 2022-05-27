@@ -21,7 +21,7 @@ function App() {
         <Route path="/registerCandidate" element={<RegisterCandidate />}></Route>
         <Route path="/login" element={<Login />}></Route>
         </Routes>
-        {!popupState.visible && <PopUp />}
+        {popupState.visible && <PopUp />}
       </BrowserRouter>
     </ErrorComponent>
   </div>
