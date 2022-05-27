@@ -5,7 +5,8 @@ import actionCreator from "../../store/actionTypes.js";
 import { ADD_ABILITY, ADD_EXPERIENCE, ADD_LANGUAGE, ADD_TRAINING, HANDLE_ABILITY, HANDLE_EXPERIENCE, HANDLE_INPUT, HANDLE_LANGUAGE, HANDLE_TRAINING, REMOVE_ABILITY, REMOVE_EXPERIENCE, REMOVE_LANGUAGE, REMOVE_TRAINING } from "../../store/typesVar.js";
 import { PersonalData } from "../../components/PersonalData/PersonalData.js";
 import { Training } from "../../components/Training/Training.js";
-import { Experience } from "../../components/Experience.js";
+import { Experience } from "../../components/Experience/Experience.js";
+import { Languages } from "../../Languages/Languages.js";
 
 const RegisterCandidate = () => {
   const dispatch = useDispatch();
@@ -105,30 +106,7 @@ return (
       <Training handleTrainingChange={handleTrainingChange} removeTraining={removeTraining} addTraining={addTraining} />
       <Experience handleExperienceChange={handleExperienceChange} addExperience={addExperience} removeExperience={removeExperience} />
       <div className="skills-lang col-11 col-md-12 col-lg-11 col-xl-8 col-xxl-6">
-        <div className="lang container-form-data col-12 col-md-6 mb-5">
-          <h2 className="col-12 mb-3 text-center">Idiomas</h2>
-          <div className="form-floating mb-5 d-flex align-items-center">
-            <input type="text" className="form-control" id="language_name" placeholder="idioma" name="language_name" onChange={handleLanguageChange}/>
-            <button className="btn btn-secondary m-2" onClick={addLanguage}><i className="bi bi-plus-lg"></i></button>
-            <label htmlFor="floatingInput ">Idioma</label>
-          </div>
-          <div className="form-floating mb-4 col-11">
-            <select className="form-select" id="language_level" aria-label="Floating label select example" name="language_level" onBlur={handleLanguageChange}>
-              <option value="selecciona">Selecciona nivel</option>
-              <option value="Basico">Basico</option>
-              <option value="Intermedio">Intermedio</option>
-              <option value="Avanzado">Avanzado</option>
-            </select>
-            <label htmlFor="floatingSelect">Nivel</label>
-          </div>
-          {languages && (languages.map((language, index)=>{
-          return (
-            <div className="bubble" key={index}>
-              <div className="ms-3">{language.language_name}</div>
-              <button onClick={event => removeLanguage(index, event)}><i className="bi bi-x"></i></button>
-            </div>)
-          }))}
-        </div>
+        <Languages handleLanguageChange={handleLanguageChange} addLanguage={addLanguage} removeLanguage={removeLanguage} />
         <div className="skills container-form-data col-12 col-md-5 mb-5">
           <h2 className="col-12 mb-3 text-center">Habilidades</h2>
           <div className="form-floating d-flex align-items-center mb-3">
