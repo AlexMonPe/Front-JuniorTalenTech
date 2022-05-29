@@ -22,8 +22,9 @@ export const Training = ({
                 name="level"
                 value={training.level}
                 onChange={(event) => handleTrainingChange(index, event)}
+                required
               >
-                <option value="Selecciona">Selecciona nivel</option>
+                <option value="">Selecciona nivel</option>
                 <option value="Educacion Secundaria Obligatoria">
                   Educacion Secundaria Obligatoria
                 </option>
@@ -51,6 +52,7 @@ export const Training = ({
                 value={training.specialty}
                 placeholder="Especialidad"
                 onChange={(event) => handleTrainingChange(index, event)}
+                required
               />
               <label htmlFor="floatingInput">Especialidad</label>
             </div>
@@ -63,6 +65,7 @@ export const Training = ({
                   name="center"
                   value={training.center}
                   onChange={(event) => handleTrainingChange(index, event)}
+                  required
                 />
                 <label htmlFor="floatingTextarea">Centro / Universidad</label>
               </div>
@@ -79,6 +82,7 @@ export const Training = ({
                 minLength={4}
                 maxLength={4}
                 onChange={(event) => handleTrainingChange(index, event)}
+                required
               />
               <label htmlFor="floatingInput">Año inicio ( Ej: 2008 )</label>
             </div>
@@ -94,6 +98,7 @@ export const Training = ({
                 minLength={4}
                 maxLength={4}
                 onChange={(event) => handleTrainingChange(index, event)}
+                required
               />
               <label htmlFor="floatingInput startDate">
                 Año fin ( Ej: 2021 )

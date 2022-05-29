@@ -46,6 +46,7 @@ export const RegisterCompany = () => {
               placeholder="nombre"
               name="name"
               onBlur={handleInputChange}
+              required
             />
             <label htmlFor="floatingInput ">Nombre</label>
           </div>
@@ -57,6 +58,7 @@ export const RegisterCompany = () => {
               name="email"
               placeholder="example@example.com"
               onBlur={handleInputChange}
+              required
             />
             <label htmlFor="floatingInput">Email</label>
           </div>
@@ -81,6 +83,7 @@ export const RegisterCompany = () => {
               placeholder="titulo"
               name="title"
               onBlur={handleInputChange}
+              required
             />
             <label htmlFor="floatingInput ">Titulo</label>
           </div>
@@ -93,6 +96,7 @@ export const RegisterCompany = () => {
               name="description"
               style={{ height: "11em" }}
               onBlur={handleInputChange}
+              required
             ></textarea>
             <label htmlFor="floatingTextarea">Descripción</label>
           </div>
@@ -105,6 +109,7 @@ export const RegisterCompany = () => {
               pattern="[a-zA-Z]{2,254}"
               name="ubication"
               onBlur={handleInputChange}
+              required
             />
             <label htmlFor="floatingInput ">Ubicación</label>
           </div>
@@ -119,6 +124,7 @@ export const RegisterCompany = () => {
               pattern="^(0|[1-9][0-9]*)$"
               name="phone_number"
               onBlur={handleInputChange}
+              required
             />
             <label htmlFor="floatingInput ">Teléfono</label>
           </div>
@@ -130,6 +136,7 @@ export const RegisterCompany = () => {
               placeholder="Pagina web"
               name="website"
               onBlur={handleInputChange}
+              required
             />
             <label htmlFor="floatingInput ">Página Web</label>
           </div>
@@ -141,6 +148,7 @@ export const RegisterCompany = () => {
               placeholder="cif"
               name="cif"
               onBlur={handleInputChange}
+              required
             />
             <label htmlFor="floatingInput ">CIF/NIF</label>
           </div>
@@ -152,6 +160,7 @@ export const RegisterCompany = () => {
               aria-label="Floating label select example"
               name="employees"
               onBlur={handleInputChange}
+              required
             >
               <option value="selecciona">Selecciona nº empleados</option>
               <option value="1-10 empleados">1-10 empleados</option>
@@ -163,9 +172,9 @@ export const RegisterCompany = () => {
             </select>
             <label htmlFor="floatingSelect">Nº empleados</label>
           </div>
-          <div className="text-center col-5 ">
+          <div className="text-center col-8">
             <input
-              className="btn btn-outline-info mb-4 col-11 col-md-6 p-2"
+              className="btn btn-outline-info mb-4 col-12 col-md-6 p-2"
               type="submit"
               value="Register"
             />

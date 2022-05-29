@@ -19,6 +19,7 @@ export const Experience = ({ handleExperienceChange, addExperience, removeExperi
                 placeholder="Nombre empresa"
                 value={experience.company_name}
                 onChange={(event) => handleExperienceChange(index, event)}
+                required
               />
               <label htmlFor="floatingInput ">Nombre empresa</label>
             </div>
@@ -31,6 +32,7 @@ export const Experience = ({ handleExperienceChange, addExperience, removeExperi
                 placeholder="Puesto de trabajo"
                 value={experience.work_name}
                 onChange={(event) => handleExperienceChange(index, event)}
+                required
               />
               <label htmlFor="floatingInput">Puesto de trabajo</label>
             </div>
@@ -44,6 +46,7 @@ export const Experience = ({ handleExperienceChange, addExperience, removeExperi
                   style={{ height: "11em" }}
                   value={experience.functions}
                   onChange={(event) => handleExperienceChange(index, event)}
+                  required
                 ></textarea>
                 <label htmlFor="floatingTextarea">Funciones</label>
               </div>
@@ -60,6 +63,7 @@ export const Experience = ({ handleExperienceChange, addExperience, removeExperi
                 maxLength={4}
                 value={experience.start_year}
                 onChange={(event) => handleExperienceChange(index, event)}
+                required
               />
               <label htmlFor="floatingInput">Año inicio ( Ej: 2008 )</label>
             </div>
@@ -75,6 +79,7 @@ export const Experience = ({ handleExperienceChange, addExperience, removeExperi
                 maxLength={4}
                 value={experience.finish_year}
                 onChange={(event) => handleExperienceChange(index, event)}
+                required
               />
               <label htmlFor="floatingInput startDate">
                 Año fin ( Ej: 2021 )

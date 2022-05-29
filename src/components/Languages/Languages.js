@@ -16,6 +16,7 @@ export const Languages = ({handleLanguageChange, addLanguage, removeLanguage}) =
             placeholder="idioma"
             name="language_name"
             onChange={handleLanguageChange}
+            required
           />
           <button className="btn btn-secondary m-2" onClick={addLanguage}>
             <i className="bi bi-plus-lg"></i>
@@ -29,8 +30,9 @@ export const Languages = ({handleLanguageChange, addLanguage, removeLanguage}) =
             aria-label="Floating label select example"
             name="language_level"
             onBlur={handleLanguageChange}
+            required
           >
-            <option value="selecciona">Selecciona nivel</option>
+            <option value="">Selecciona nivel</option>
             <option value="Basico">Basico</option>
             <option value="Intermedio">Intermedio</option>
             <option value="Avanzado">Avanzado</option>

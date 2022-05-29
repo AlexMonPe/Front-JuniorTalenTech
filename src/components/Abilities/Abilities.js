@@ -16,6 +16,7 @@ export const Abilities = ({handleAbilityChange, addAbility, removeAbility}) => {
             placeholder="Habilidades"
             name="abilities"
             onChange={handleAbilityChange}
+            required
           />
           <button className="btn btn-secondary m-2" onClick={addAbility}>
             <i className="bi bi-plus-lg"></i>
