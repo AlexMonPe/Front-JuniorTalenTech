@@ -1,20 +1,15 @@
 .login-page{
+  @include background("bg-login");
+
     padding: 2em;
     display: flex;
-    background-image: url('../../../public/images/bg-login.jpg');    
-    background-size: cover;
-    min-height: 100vh;
     justify-content: center;
     align-items: center;
     font-family: newYork;
 }
 
 .container-login-data{
-    background-color: $bg-color-form;
-    display: flex;
-    flex-direction: column;
-    box-shadow: 0px 0px 15px 6px $box-shadow-form-data;
+    @include container-form-data(800px, 4em, column);
     align-content: center;
-    padding: 4em;
-    max-width: 800px;
+    
 }

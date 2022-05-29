@@ -14,13 +14,8 @@ form {
     border-bottom: 1px solid black;
   }
   .container-form-data {
-    display: flex;
-    box-shadow: 0px 0px 16px 5px $box-shadow-form-data;
-    background-color: $bg-color-form;
+    @include container-form-data(750px, 3em);
     justify-content: space-around;
-    padding: 3em;
-    flex-wrap: wrap !important;
-    max-width: 750px;
     button {
       background-color: $btn-color;
       color: black;
