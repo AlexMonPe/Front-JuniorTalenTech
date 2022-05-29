@@ -17,7 +17,7 @@ export const PersonalData = ({handleInputChange}) => {
           <input type="email" className="form-control" id="email" name="email" placeholder="example@example.com" onBlur={handleInputChange} />
           <label htmlFor="floatingInput">Email</label>
         </div>
-        <div className="form-floating mb-4 col-12 col-sm-5 col">
+        <div className="form-floating mb-4 col-12 col-sm-5 col-lg-5">
           <input type="password" className="form-control" id="password" name="password" placeholder="contraseña" minLength={6} onBlur={handleInputChange} required
           />
           <label htmlFor="floatingInput">Contraseña</label>
