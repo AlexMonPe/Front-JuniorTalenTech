@@ -24,9 +24,10 @@ export const RegisterCompany = () => {
 
       if (companyCreated.error) {
         popUp(`${companyCreated.error}`);
-        
       } else {
-        popUp(`Te has registrado correctamente, ¡bienvenid@ ${companyData.name}!`);
+        popUp(
+          `Te has registrado correctamente, ¡bienvenid@ ${companyData.name}!`
+        );
         setTimeout(() => navigate("/login"), 4000);
       }
     } catch (error) {}
@@ -35,7 +36,7 @@ export const RegisterCompany = () => {
   return (
     <div className="register-company-container p-5">
       <form onSubmit={(event) => registerSubmit(event)}>
-        <div className="container-form-data">
+        <div className="container-form-data mb-5">
           <h2 className="col-12 mb-4 text-center">Datos de la empresa</h2>
           <div className="form-floating col-11 mb-4">
             <input
@@ -171,13 +172,13 @@ export const RegisterCompany = () => {
             </select>
             <label htmlFor="floatingSelect">Nº empleados</label>
           </div>
-          <div className="text-center col-8">
-            <input
-              className="btn btn-outline-info mb-4 col-12 col-md-6 p-2"
-              type="submit"
-              value="Register"
-            />
-          </div>
+        </div>
+        <div className="text-center col-8">
+          <input
+            className="btn btn-outline-info mb-4 col-12 col-md-6 p-2"
+            type="submit"
+            value="Register"
+          />
         </div>
       </form>
     </div>
