@@ -13,6 +13,20 @@ export const apiConsumer = {
       console.log(error, "error in register candidate apiconsumer");
     }
   },
+  registerCompany: async (formData) => {
+    try {
+      const createCompany = await fetch("http://localhost:1919/companies/", {
+        method: "POST",
+        body: JSON.stringify(formData),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      return await createCompany.json();
+    } catch (error) {
+      console.log(error, "error in register company apiconsumer");
+    }
+  },
   login: async (loginData) => {
     try {
       let loginUser = await fetch(
