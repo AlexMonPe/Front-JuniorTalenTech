@@ -7,6 +7,7 @@ import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import Login from './containers/Login/Login.js';
 import { useSelector } from 'react-redux';
 import { PopUp } from './components/Popup/Popup.js';
+import { RegisterCompany } from './containers/RegisterCompany/RegisterCompany.js';
 
 
 
@@ -19,6 +20,8 @@ function App() {
       <Header />
         <Routes>
         <Route path="/registerCandidate" element={<RegisterCandidate />}></Route>
+        <Route path="/registerCompany" element={<RegisterCompany />}></Route>
+
         <Route path="/login" element={<Login />}></Route>
         </Routes>
         {popupState.visible && <PopUp />}
