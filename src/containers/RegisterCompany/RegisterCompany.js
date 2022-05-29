@@ -22,13 +22,12 @@ export const RegisterCompany = () => {
     try {
       const companyCreated = await apiConsumer.registerCompany(companyData);
 
-      if (companyCreated) {
-        popUp(
-          `Te has registrado correctamente, ¡bienvenid@ ${companyData.name}!`
-        );
-        setTimeout(() => navigate("/login"), 4000);
-      } else {
+      if (companyCreated.error) {
         popUp(`${companyCreated.error}`);
+        
+      } else {
+        popUp(`Te has registrado correctamente, ¡bienvenid@ ${companyData.name}!`);
+        setTimeout(() => navigate("/login"), 4000);
       }
     } catch (error) {}
   };

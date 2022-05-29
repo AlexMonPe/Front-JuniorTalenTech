@@ -31,7 +31,7 @@ export const PersonalData = ({handleInputChange}) => {
           <label htmlFor="floatingInput">Teléfono</label>
         </div>
         <div className="form-floating mb-4 col-12 col-sm-11 col-md-4 col-lg-4">
-          <input type="date" className="form-control" id="born_date" placeholder="dd/mm/aaaa" name="born_date" onBlur={handleInputChange}/>
+          <input type="date" className="form-control" id="born_date" placeholder="dd/mm/aaaa" name="born_date" onBlur={handleInputChange} required/>
           <label htmlFor="floatingInput startDate">Fecha de nacimiento</label>
         </div>
         <div className="form-floating col-12 col-sm-11 col-md-6">

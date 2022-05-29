@@ -17,7 +17,14 @@ const Login = () => {
       localStorage.setItem('token',loginUser.token)
       localStorage.setItem('id',loginUser.id)
       localStorage.setItem('role',loginUser.role)
-      popUp('Bienvenido a JuniorTalenTech')
+
+      if(loginUser.error){
+        popUp(`${loginUser.error}`)
+      }else{
+        console.log(loginUser)
+        popUp(`Bienvenid@ a JuniorTalenTech`)
+      }
+     
 
     } catch (error) {
       console.log(error);

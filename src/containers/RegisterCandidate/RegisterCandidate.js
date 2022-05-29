@@ -118,11 +118,12 @@ const RegisterCandidate = () => {
 
       candidateCreated.error ? setError(candidateCreated.error) : setError(false);
 
-      if (candidateCreated){
-         popUp("Te has registrado correctamente, ¡bienvenido!")
-         setTimeout(()=>navigate("/login"), 4000);
+      if (candidateCreated.error){
+       return popUp(`${candidateCreated.error}`);
+         
       }else {
-        popUp(`${candidateCreated.error}`);
+        popUp(`Te has registrado correctamente, ¡bienvenido ${candidateData.name}!`)
+         setTimeout(()=>navigate("/login"), 4000);
       }  
       
     } catch (error) {
