@@ -5,11 +5,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: newYork;
 }
 
 .container-login-data{
     @include container-form-data(800px, 4em, column);
     align-content: center;
-    
+    .btn-outline-info{
+    background: linear-gradient(0deg, #36d2f5b1, #ffffff00);
+    }
+    .loginRedirect{
+      font-family: calvino;
+    }
 }
