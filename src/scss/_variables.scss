@@ -4,12 +4,26 @@ $btn-hover: #4d91f7;
 $bubble-bg: #ffffff00;
 $bg-color-form: #ffffffd1;
 
-
 //mixin
 
-@mixin background($imgName, $bgSize: cover, $repeat: no-repeat ){
-    $url: "../../public/images/#{$imgName}.jpg";
-    background-image: url($url);
-    background-size: $bgSize;
-    background-repeat: $repeat;
+@mixin background($imgName, $bgSize: cover, $repeat: no-repeat) {
+  $url: "../../public/images/#{$imgName}.jpg";
+  background: {
+    image: url($url);
+    size: $bgSize;
+    repeat: $repeat;
   }
+  min-height: 100vh;
+}
+
+@mixin container-form-data($max-width, $padding, $flex-direction: row) {
+  display: flex;
+  flex: {
+    direction: $flex-direction;
+    wrap: wrap !important
+  }
+  box-shadow: 0px 0px 16px 5px $box-shadow-form-data;
+  background-color: $bg-color-form;
+  max-width: $max-width;
+  padding: $padding;
+}
