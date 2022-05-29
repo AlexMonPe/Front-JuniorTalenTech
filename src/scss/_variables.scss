@@ -3,3 +3,13 @@ $btn-color: #36d2f5;
 $btn-hover: #4d91f7;
 $bubble-bg: #ffffff00;
 $bg-color-form: #ffffffd1;
+
+
+//mixin
+
+@mixin background($imgName, $bgSize: cover, $repeat: no-repeat ){
+    $url: "../../public/images/#{$imgName}.jpg";
+    background-image: url($url);
+    background-size: $bgSize;
+    background-repeat: $repeat;
+  }
