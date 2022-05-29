@@ -141,7 +141,7 @@ const RegisterCandidate = () => {
           <Abilities handleAbilityChange={handleAbilityChange} addAbility={addAbility} removeAbility={removeAbility} />
         </div>
         <div className="text-center col-5">
-          <input className="btn btn-outline-info mb-4 col-12 col-md-6 p-2" type="submit" value="Register" />
+          <input className="btn btn-outline-info mb-4 col-12 col-md-6 p-2" type="submit" value="Registrarse" />
         </div>
       </form>
     </div>
