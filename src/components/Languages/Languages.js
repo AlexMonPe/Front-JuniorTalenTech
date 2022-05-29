@@ -11,7 +11,7 @@ export const Languages = ({handleLanguageChange, addLanguage, removeLanguage}) =
         <div className="form-floating mb-5 d-flex align-items-center">
           <input
             type="text"
-            className="form-control"
+            className="form-control col-12"
             id="language_name"
             placeholder="idioma"
             name="language_name"
@@ -23,7 +23,7 @@ export const Languages = ({handleLanguageChange, addLanguage, removeLanguage}) =
           </button>
           <label htmlFor="floatingInput ">Idioma</label>
         </div>
-        <div className="form-floating mb-4 col-11">
+        <div className="form-floating mb-4 col-12 col-sm-9 col-md-12 col-lg-10 col-xl-12 ">
           <select
             className="form-select"
             id="language_level"
