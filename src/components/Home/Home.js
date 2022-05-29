@@ -1,4 +1,7 @@
+import { useNavigate } from "react-router-dom";
+
 export const Home = () => {
+  const navigate = useNavigate();
   return (
     <div className="home-container">
       <div className="home">
@@ -23,8 +26,8 @@ export const Home = () => {
           </ul>
         </div>
         <div className="d-flex justify-content-center col-12">
-          <button className="btn btn-outline-info text-white p-3 me-5">Empresas</button>
-          <button className="btn btn-outline-info text-white p-3">Candidatos</button>
+          <button className="btn btn-outline-info text-white p-3 me-5" onClick={()=>navigate('/registerCompany')}>Empresas</button>
+          <button className="btn btn-outline-info text-white p-3" onClick={()=>navigate('/registercandidate')}>Candidatos</button>
         </div>
       </div>
     </div>
