@@ -1,6 +1,9 @@
 .register-candidate-container {
-
   @include background("code-rain-bg");
+  .btn-outline-info{
+    background: linear-gradient(0deg, #36d2f5, #ffffff00);
+    color: white;
+  }
 }
 
 form {
@@ -16,9 +19,8 @@ form {
   .container-form-data {
     @include container-form-data(750px, 3em);
     justify-content: space-around;
-    
+
     button {
-      background-color: $btn-color;
       color: black;
       &:hover {
         background-color: $btn-hover;
