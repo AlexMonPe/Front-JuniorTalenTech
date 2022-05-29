@@ -8,6 +8,7 @@ import Login from './containers/Login/Login.js';
 import { useSelector } from 'react-redux';
 import { PopUp } from './components/Popup/Popup.js';
 import { RegisterCompany } from './containers/RegisterCompany/RegisterCompany.js';
+import { Home } from './components/Home/Home.js';
 
 
 
@@ -19,6 +20,7 @@ function App() {
       <BrowserRouter>
       <Header />
         <Routes>
+        <Route path="/" element={<Home />}></Route>
         <Route path="/registerCandidate" element={<RegisterCandidate />}></Route>
         <Route path="/registerCompany" element={<RegisterCompany />}></Route>
 
