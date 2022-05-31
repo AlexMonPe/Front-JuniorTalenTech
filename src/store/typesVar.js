@@ -12,6 +12,8 @@ export const REMOVE_LANGUAGE = "REMOVE_LANGUAGE";
 export const ADD_ABILITY = "ADD_ABILITY";
 export const HANDLE_ABILITY = "HANDLE_ABILITY";
 export const REMOVE_ABILITY = "REMOVE_ABILITY";
+export const IS_EDITABLE = "IS_EDITABLE";
+export const IS_NOT_EDITABLE = "IS_NOT_EDITABLE";
 //Form Company
 export const HANDLE_INPUT_COMPANY = "HANDLE_INPUT_COMPANY";
 
