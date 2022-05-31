@@ -29,19 +29,24 @@ export const apiConsumer = {
   },
   login: async (loginData) => {
     try {
-      let loginUser = await fetch(
-        "http://localhost:1919/users/login",
-        {
-          method: "POST",
-          body: JSON.stringify(loginData),
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const loginUser = await fetch("http://localhost:1919/users/login", {
+        method: "POST",
+        body: JSON.stringify(loginData),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
       return await loginUser.json();
     } catch (error) {
       console.log(error, "Error login in user apiconsumer");
+    }
+  },
+  getCandidateByUserId: async (idUser) => {
+    try {
+
+      return await (await fetch(`http://localhost:1919/candidates/${idUser}`)).json();
+    } catch (error) {
+      console.log(error, "Error in getcandidateByUser in apiConsumer ");
     }
   },
 };
