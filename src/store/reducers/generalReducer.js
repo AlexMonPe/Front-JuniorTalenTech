@@ -1,5 +1,7 @@
 import {
   CLOSE_POPUP,
+  IS_EDITABLE,
+  IS_NOT_EDITABLE,
   SET_ERROR,
   SHOW_POPUP,
   USER_LOGOUT,
@@ -8,6 +10,7 @@ import {
 const initialState = {
   popup: { visible: false, text: "" },
   error: "",
+  isEditable: false
 };
 
 export const generalReducer = (state = initialState, action) => {
@@ -34,6 +37,17 @@ export const generalReducer = (state = initialState, action) => {
       localStorage.removeItem("token");
       localStorage.removeItem("id");
       localStorage.removeItem("role");
+    
+      case IS_EDITABLE:
+        return{
+          ...state, 
+          isEditable: true
+        }
+        case IS_NOT_EDITABLE:
+          return{
+            ...state, 
+            isEditable: false
+          }
   }
   return state;
 };
