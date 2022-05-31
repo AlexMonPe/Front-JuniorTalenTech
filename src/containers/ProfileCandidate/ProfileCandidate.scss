@@ -1,3 +1,80 @@
 .profile-candidate{
-    @include background('profile-bg')
+    @include background('profile-bg');
 }
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: newYork;
+    h2 {
+      height: fit-content;
+      padding-bottom: 15px;
+      border-bottom: 1px solid black;
+    }
+    .container-form-data {
+      @include container-form-data(750px, 3em);
+      justify-content: space-around;
+  
+      button {
+        color: black;
+        &:hover {
+          background-color: $btn-hover;
+        }
+      }
+    }
+    .lang {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap !important;
+      align-content: center;
+      padding: 2em;
+      button {
+        border: none;
+        display: flex;
+        width: 2em;
+        height: 2em;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+    .bubble {
+      background-color: $btn-color;
+      width: fit-content;
+      height: fit-content;
+      display: flex;
+      border-radius: 9px;
+      align-items: center;
+      justify-content: flex-end;
+      color: black;
+      margin-bottom: 10px;
+      button {
+        border: none;
+        color: white;
+        background-color: $bubble-bg;
+        &:hover {
+          background-color: $bubble-bg;
+        }
+      }
+    }
+    .skills-lang {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      .skills {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        padding: 2em;
+        button {
+          border: none;
+          display: flex;
+          width: 2em;
+          height: 2em;
+          justify-content: center;
+          align-items: center;
+        }
+      }
+    }
+  }
