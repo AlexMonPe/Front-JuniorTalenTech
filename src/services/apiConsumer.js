@@ -43,10 +43,27 @@ export const apiConsumer = {
   },
   getCandidateByUserId: async (idUser) => {
     try {
-
-      return await (await fetch(`http://localhost:1919/candidates/${idUser}`)).json();
+      return await (
+        await fetch(`http://localhost:1919/candidates/${idUser}`)
+      ).json();
     } catch (error) {
       console.log(error, "Error in getcandidateByUser in apiConsumer ");
+    }
+  },
+  updateCandidate: async (candidateProfile) => {
+    try {
+      const profileUpdated = await fetch("http://localhost:1919/candidates/", {
+        method: "PATCH",
+        body: JSON.stringify(candidateProfile),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      console.log(profileUpdated, ' profile updated')
+      return profileUpdated;
+
+    } catch (error) {
+      console.log(error, "Error in updateProfile in apiConsumer");
     }
   },
 };
