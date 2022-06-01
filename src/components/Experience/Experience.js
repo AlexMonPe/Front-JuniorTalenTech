@@ -13,16 +13,6 @@ export const Experience = ({
   const experiences = useSelector((state) => state.candidate.experience);
   const isEditable = useSelector((state) => state.general.isEditable);
 
-  const addProfileExperience = (e) => {
-    e.preventDefault();
-    dispatch(actionCreator(ADD_PROFILE_EXPERIENCE));
-  };
-
-  const removeProfileExperience = (index, e) => {
-    e.preventDefault();
-    dispatch(actionCreator(REMOVE_PROFILE_EXPERIENCE, index));
-  };
-
   return (
     <Fragment>
       {isEditable
@@ -39,7 +29,7 @@ export const Experience = ({
                     name="company_name"
                     placeholder="Nombre empresa"
                     defaultValue={currProfile[index].company_name}
-                    onChange={(event) => handleExperienceChange(index, event)}
+                    onBlur={(event) => handleExperienceChange(index, event)}
                   />
                   <label htmlFor="floatingInput ">Nombre empresa</label>
                 </div>
@@ -51,7 +41,7 @@ export const Experience = ({
                     name="work_name"
                     placeholder="Puesto de trabajo"
                     defaultValue={currProfile[index].work_name}
-                    onChange={(event) => handleExperienceChange(index, event)}
+                    onBlur={(event) => handleExperienceChange(index, event)}
                   />
                   <label htmlFor="floatingInput">Puesto de trabajo</label>
                 </div>
@@ -64,7 +54,7 @@ export const Experience = ({
                       name="functions"
                       style={{ height: "11em" }}
                       defaultValue={currProfile[index].functions}
-                      onChange={(event) => handleExperienceChange(index, event)}
+                      onBlur={(event) => handleExperienceChange(index, event)}
                     ></textarea>
                     <label htmlFor="floatingTextarea">Funciones</label>
                   </div>
@@ -80,7 +70,7 @@ export const Experience = ({
                     minLength={4}
                     maxLength={4}
                     defaultValue={currProfile[index].start_year}
-                    onChange={(event) => handleExperienceChange(index, event)}
+                    onBlur={(event) => handleExperienceChange(index, event)}
                   />
                   <label htmlFor="floatingInput">Año inicio ( Ej: 2008 )</label>
                 </div>
@@ -95,7 +85,7 @@ export const Experience = ({
                     minLength={4}
                     maxLength={4}
                     defaultValue={currProfile[index].finish_year}
-                    onChange={(event) => handleExperienceChange(index, event)}
+                    onBlur={(event) => handleExperienceChange(index, event)}
                   />
                   <label htmlFor="floatingInput startDate">
                     Año fin ( Ej: 2021 )
@@ -104,13 +94,13 @@ export const Experience = ({
                 <div className="">
                   <button
                     className="btn btn-secondary  m-2"
-                    onClick={addProfileExperience}
+                    onClick={addExperience}
                   >
                     Añadir
                   </button>
                   <button
                     className="btn btn-secondary  m-2"
-                    onClick={(event) => removeProfileExperience(index, event)}
+                    onClick={(event) => removeExperience(index, event)}
                   >
                     Eliminar
                   </button>
@@ -130,7 +120,7 @@ export const Experience = ({
                     name="company_name"
                     placeholder="Nombre empresa"
                     defaultValue={experience.company_name}
-                    onChange={(event) => handleExperienceChange(index, event)}
+                    onBlur={(event) => handleExperienceChange(index, event)}
                   />
                   <label htmlFor="floatingInput ">Nombre empresa</label>
                 </div>
