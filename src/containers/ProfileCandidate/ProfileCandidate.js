@@ -9,109 +9,119 @@ import { apiConsumer } from "../../services/apiConsumer.js";
 import actionCreator from "../../store/actionTypes.js";
 import {
     ADD_ABILITY,
+    ADD_ABILITY_PROFILE,
     ADD_EXPERIENCE,
     ADD_LANGUAGE,
+    ADD_LANGUAGE_PROFILE,
+    ADD_PROFILE_EXPERIENCE,
+    ADD_PROFILE_TRAINING,
     ADD_TRAINING,
     HANDLE_ABILITY,
+    HANDLE_ABILITY_PROFILE,
     HANDLE_EXPERIENCE,
+    HANDLE_EXPERIENCE_PROFILE,
     HANDLE_INPUT,
+    HANDLE_INPUT_PROFILE,
     HANDLE_LANGUAGE,
+    HANDLE_LANGUAGE_PROFILE,
     HANDLE_TRAINING,
+    HANDLE_TRAINING_PROFILE,
     IS_EDITABLE,
     IS_NOT_EDITABLE,
     REMOVE_ABILITY,
+    REMOVE_ABILITY_PROFILE,
     REMOVE_EXPERIENCE,
     REMOVE_LANGUAGE,
+    REMOVE_LANGUAGE_PROFILE,
+    REMOVE_PROFILE_EXPERIENCE,
+    REMOVE_PROFILE_TRAINING,
     REMOVE_TRAINING,
     SET_PROFILE,
   } from "../../store/typesVar.js";
 
 export const ProfileCandidate = () => {
   const dispatch = useDispatch();
-  const candidateData = useSelector
-  ((state) => state.candidate);
-  const formData = useSelector((state) => state.candidate.form);
-  const experiences = useSelector((state) => state.candidate.experience);
-  const training = useSelector((state) => state.candidate.training);
-  const languages = useSelector((state) => state.candidate.languages);
-  const abilities = useSelector((state) => state.candidate.abilities);
-  const profile = useSelector((state) => state.candidate.profile)
-  const isEditable = useSelector((state) => state.general.isEditable);
-
+  
+  const profile = useSelector((state) => state.candidate.profile);
+  const formProfile = useSelector((state) => state.candidate.profile[0].form);
+  const profileExperiences = useSelector((state) => state.candidate.profile[0].experience);
+  const profileTraining = useSelector((state) => state.candidate.profile[0].training);
+  const profileLanguages = useSelector((state) => state.candidate.profile[0].languages);
+  const profileAbilities = useSelector((state) => state.candidate.profile[0].abilities);
 
   const idUser = localStorage.getItem("id");
 
-  const [error, setError] = useState("");
 
   const handleInputChange = (event) => {
-    let inputData = { ...formData, [event.target.name]: event.target.value };
-    dispatch(actionCreator(HANDLE_INPUT, inputData));
+    let inputData = { ...formProfile, [event.target.name]: event.target.value };
+    dispatch(actionCreator(HANDLE_INPUT_PROFILE, inputData));
   };
 
   const handleExperienceChange = (index, event) => {
-    let expData = [...experiences];
+    let expData = [...profileExperiences];
     expData[index][event.target.name] = event.target.value;
-    dispatch(actionCreator(HANDLE_EXPERIENCE, expData));
+    dispatch(actionCreator(HANDLE_EXPERIENCE_PROFILE, expData));
   };
 
   const handleTrainingChange = (index, event) => {
-    let trainData = [...training];
+    let trainData = [...profileTraining];
     trainData[index][event.target.name] = event.target.value;
-    dispatch(actionCreator(HANDLE_TRAINING, trainData));
+    dispatch(actionCreator(HANDLE_TRAINING_PROFILE, trainData));
   };
 
   const handleLanguageChange = (event) => {
-    const langData = [...languages];
+    const langData = [...profileLanguages];
     const index = langData.length - 1;
     langData[index][event.target.name] = event.target.value;
-    dispatch(actionCreator(HANDLE_LANGUAGE, langData));
+    dispatch(actionCreator(HANDLE_LANGUAGE_PROFILE, langData));
   };
 
   const handleAbilityChange = (event) => {
-    const abilityData = [...abilities];
+    const abilityData = [...profileAbilities];
     const index = abilityData.length - 1;
     abilityData[index] = event.target.value;
-    dispatch(actionCreator(HANDLE_ABILITY, abilityData));
+    dispatch(actionCreator(HANDLE_ABILITY_PROFILE, abilityData));
   };
 
   const addTraining = (event) => {
     event.preventDefault();
-    dispatch(actionCreator(ADD_TRAINING));
+    dispatch(actionCreator(ADD_PROFILE_TRAINING));
   };
 
   const removeTraining = (index, event) => {
     event.preventDefault();
-    dispatch(actionCreator(REMOVE_TRAINING, index));
+    dispatch(actionCreator(REMOVE_PROFILE_TRAINING, index));
+
   };
 
   const addExperience = (event) => {
     event.preventDefault();
-    dispatch(actionCreator(ADD_EXPERIENCE));
+    dispatch(actionCreator(ADD_PROFILE_EXPERIENCE));
   };
 
   const removeExperience = (index, event) => {
     event.preventDefault();
-    dispatch(actionCreator(REMOVE_EXPERIENCE, index));
+    dispatch(actionCreator(REMOVE_PROFILE_EXPERIENCE, index));
   };
 
   const addLanguage = (event) => {
     event.preventDefault();
-    dispatch(actionCreator(ADD_LANGUAGE));
+    dispatch(actionCreator(ADD_LANGUAGE_PROFILE));
   };
 
   const removeLanguage = (index, event) => {
     event.preventDefault();
-    dispatch(actionCreator(REMOVE_LANGUAGE, index));
+    dispatch(actionCreator(REMOVE_LANGUAGE_PROFILE, index));
   };
 
   const addAbility = (event) => {
     event.preventDefault();
-    dispatch(actionCreator(ADD_ABILITY));
+    dispatch(actionCreator(ADD_ABILITY_PROFILE));
   };
 
   const removeAbility = (index, event) => {
     event.preventDefault();
-    dispatch(actionCreator(REMOVE_ABILITY, index));
+    dispatch(actionCreator(REMOVE_ABILITY_PROFILE, index));
   };
 
 
