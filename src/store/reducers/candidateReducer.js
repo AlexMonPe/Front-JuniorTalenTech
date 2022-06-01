@@ -2,6 +2,8 @@ import {
   ADD_ABILITY,
   ADD_EXPERIENCE,
   ADD_LANGUAGE,
+  ADD_PROFILE_EXPERIENCE,
+  ADD_PROFILE_TRAINING,
   ADD_TRAINING,
   HANDLE_ABILITY,
   HANDLE_EXPERIENCE,
@@ -11,10 +13,22 @@ import {
   REMOVE_ABILITY,
   REMOVE_EXPERIENCE,
   REMOVE_LANGUAGE,
+  REMOVE_PROFILE_EXPERIENCE,
+  REMOVE_PROFILE_TRAINING,
   REMOVE_TRAINING,
+  SET_PROFILE,
 } from "../typesVar.js";
 
 const initialState = {
+  profile: [
+    {
+      form: {},
+      experience: [],
+      training: [],
+      languages: [],
+      abilities: [],
+    },
+  ],
   form: {},
   experience: [
     {
@@ -44,6 +58,13 @@ const initialState = {
 };
 
 export const candidateReducer = (state = initialState, action) => {
+  if (action.type === SET_PROFILE) {
+    return {
+      ...state,
+      profile: action.payload,
+    };
+  }
+
   if (action.type === HANDLE_INPUT) {
     return {
       ...state,
@@ -57,7 +78,7 @@ export const candidateReducer = (state = initialState, action) => {
     };
   }
 
-  if (action.type === ADD_EXPERIENCE) {
+  if (action.type === ADD_EXPERIENCE || action.type === ADD_PROFILE_EXPERIENCE) {
     let newExperience = {
       company_name: "",
       work_name: "",
@@ -65,18 +86,35 @@ export const candidateReducer = (state = initialState, action) => {
       start_year: "",
       finish_year: "",
     };
-    return {
+    if (action.type === ADD_EXPERIENCE){
+      return {
       ...state,
       experience: state.experience.concat([newExperience]),
     };
+    }else {
+      state.profile[0].experience.push(newExperience);
+      return JSON.parse(JSON.stringify(state));
+    }
+    
   }
-  if (action.type === REMOVE_EXPERIENCE) {
-    let expData = [...state.experience];
-    if (expData.length > 1) expData.splice(action.payload, 1);
-    return {
-      ...state,
-      experience: expData,
-    };
+  if (
+    action.type === REMOVE_EXPERIENCE ||
+    action.type === REMOVE_PROFILE_EXPERIENCE
+  ) {
+    if (action.type === REMOVE_EXPERIENCE) {
+      let expData = [...state.experience];
+      if (expData.length > 1) expData.splice(action.payload, 1);
+      return {
+        ...state,
+        experience: expData,
+      };
+    } else {
+      console.log(action.payload, ' indice')
+      if(state.profile[0].experience.length > 1){
+        state.profile[0].experience.splice(action.payload, 1);
+      }
+      return JSON.parse(JSON.stringify(state));
+    }
   }
 
   if (action.type === HANDLE_TRAINING) {
@@ -86,7 +124,7 @@ export const candidateReducer = (state = initialState, action) => {
     };
   }
 
-  if (action.type === ADD_TRAINING) {
+  if (action.type === ADD_TRAINING || action.type === ADD_PROFILE_TRAINING) {
     let newTraining = {
       level: "",
       specialty: "",
@@ -94,19 +132,32 @@ export const candidateReducer = (state = initialState, action) => {
       start_year: "",
       finish_year: "",
     };
-    return {
-      ...state,
-      training: state.training.concat([newTraining]),
-    };
+    if (action.type === ADD_TRAINING) {
+      return {
+        ...state,
+        training: state.training.concat(newTraining),
+      };
+    } else {
+      state.profile[0].training.push(newTraining);
+      return JSON.parse(JSON.stringify(state));
+    }
   }
 
-  if (action.type === REMOVE_TRAINING) {
-    let trainData = [...state.training];
-    if (trainData.length > 1) trainData.splice(action.payload, 1);
-    return {
-      ...state,
-      training: trainData,
-    };
+  if (
+    action.type === REMOVE_TRAINING ||
+    action.type === REMOVE_PROFILE_TRAINING
+  ) {
+    if (action.type === REMOVE_TRAINING) {
+      let trainData = [...state.training];
+      if (trainData.length > 1) trainData.splice(action.payload, 1);
+      return {
+        ...state,
+        training: trainData,
+      };
+    } else {
+      state.profile[0].training.splice(action.payload, 1);
+      return JSON.parse(JSON.stringify(state));
+    }
   }
 
   if (action.type === HANDLE_LANGUAGE) {
