@@ -10,7 +10,6 @@ export const Languages = ({
   const languages = useSelector((state) => state.candidate.languages);
   const isEditable = useSelector((state) => state.general.isEditable);
 
-
   return (
     <Fragment>
       {isEditable ? (

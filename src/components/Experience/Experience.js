@@ -1,7 +1,5 @@
 import { Fragment } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import actionCreator from "../../store/actionTypes.js";
-import { ADD_PROFILE_EXPERIENCE, REMOVE_PROFILE_EXPERIENCE } from "../../store/typesVar.js";
+import { useSelector } from "react-redux";
 
 export const Experience = ({
   handleExperienceChange,
@@ -9,7 +7,6 @@ export const Experience = ({
   currProfile,
   removeExperience,
 }) => {
-  const dispatch = useDispatch();
   const experiences = useSelector((state) => state.candidate.experience);
   const isEditable = useSelector((state) => state.general.isEditable);
 
@@ -18,7 +15,6 @@ export const Experience = ({
       {isEditable
         ? currProfile.map((experience, index) => {
             return (
-              
               <div className="container-form-data col-12 mb-5" key={index}>
                 <h2 className="col-12 mb-4 text-center">Experiencia</h2>
                 <div className="form-floating mb-4 col-12 col-sm-5">

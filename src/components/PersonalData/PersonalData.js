@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 
 export const PersonalData = ({ handleInputChange, currProfile }) => {
   const isEditable = useSelector((state) => state.general.isEditable);
-  
+
   return (
     <Fragment>
       <div className="container-form-data .flex-sm-column mb-5">
