@@ -10,6 +10,7 @@ import { PopUp } from './components/Popup/Popup.js';
 import { RegisterCompany } from './containers/RegisterCompany/RegisterCompany.js';
 import { Home } from './components/Home/Home.js';
 import { ProfileCandidate } from './containers/ProfileCandidate/ProfileCandidate.js';
+import { ProfileCompany } from './containers/ProfileCompany/ProfileCompany.js';
 
 
 
@@ -25,6 +26,7 @@ function App() {
         <Route path="/registerCandidate" element={<RegisterCandidate />}></Route>
         <Route path="/registerCompany" element={<RegisterCompany />}></Route>
         <Route path="/profileCandidate" element={<ProfileCandidate />}></Route>
+        <Route path="/profileCompany" element={<ProfileCompany />}></Route>
         <Route path="/login" element={<Login />}></Route>
         </Routes>
         {popupState.visible && <PopUp />}
