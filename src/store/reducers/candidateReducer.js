@@ -241,7 +241,6 @@ export const candidateReducer = (state = initialState, action) => {
         abilities: action.payload,
       };
     } else {
-      console.log(action.payload, "pay");
       state.profile[0].abilities = action.payload;
 
       return JSON.parse(JSON.stringify(state));

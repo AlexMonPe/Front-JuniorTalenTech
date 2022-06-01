@@ -48,7 +48,8 @@ export const ProfileCandidate = () => {
   const profileTraining = useSelector((state) => state.candidate.profile[0].training);
   const profileLanguages = useSelector((state) => state.candidate.profile[0].languages);
   const profileAbilities = useSelector((state) => state.candidate.profile[0].abilities);
-
+  const profileData = useSelector((state) => state.candidate.profile[0])
+  
   const idUser = localStorage.getItem("id");
 
 
@@ -140,12 +141,11 @@ export const ProfileCandidate = () => {
     loadProfile();
   }, []);
 
+  
   const registerSubmit = async (event) =>{
     event.preventDefault();
     try {
-      const profileUpdated = await apiConsumer.updateCandidate()
-
-       (profileUpdated) ? console.log('se ha actualizado con exito') : 'error'
+      const profileUpdate = await apiConsumer.updateCandidate(profileData);
 
         dispatch(actionCreator(IS_NOT_EDITABLE))
     } catch (error) {

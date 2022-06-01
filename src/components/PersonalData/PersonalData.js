@@ -14,7 +14,6 @@ export const PersonalData = ({ handleInputChange, currProfile }) => {
             className="form-control"
             id="name"
             placeholder="nombre"
-            pattern="[a-zA-Z]{2,254}"
             name="name"
             defaultValue={isEditable ? currProfile.name : ""}
             onBlur={handleInputChange}

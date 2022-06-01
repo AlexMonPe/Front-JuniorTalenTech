@@ -20,7 +20,6 @@ const Login = () => {
       if (loginUser.error) {
         popUp(`${loginUser.error}`);
       } else {
-        console.log(loginUser);
         popUp(`Bienvenid@ a JuniorTalenTech`);
       }
     } catch (error) {
