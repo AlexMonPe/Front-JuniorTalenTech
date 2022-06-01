@@ -52,14 +52,13 @@ export const apiConsumer = {
   },
   updateCandidate: async (candidateProfile) => {
     try {
-      const profileUpdated = await fetch("http://localhost:1919/candidates/", {
+      const profileUpdated = await fetch("http://localhost:1919/candidates/" + candidateProfile._id, {
         method: "PATCH",
         body: JSON.stringify(candidateProfile),
         headers: {
           "Content-Type": "application/json",
         },
       });
-      console.log(profileUpdated, ' profile updated')
       return profileUpdated;
 
     } catch (error) {
