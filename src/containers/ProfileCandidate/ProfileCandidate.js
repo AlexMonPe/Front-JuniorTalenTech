@@ -23,6 +23,7 @@ import {
     REMOVE_EXPERIENCE,
     REMOVE_LANGUAGE,
     REMOVE_TRAINING,
+    SET_PROFILE,
   } from "../../store/typesVar.js";
 
 export const ProfileCandidate = () => {
@@ -34,10 +35,11 @@ export const ProfileCandidate = () => {
   const training = useSelector((state) => state.candidate.training);
   const languages = useSelector((state) => state.candidate.languages);
   const abilities = useSelector((state) => state.candidate.abilities);
+  const profile = useSelector((state) => state.candidate.profile)
   const isEditable = useSelector((state) => state.general.isEditable);
 
+
   const idUser = localStorage.getItem("id");
-  const [profile, setProfile] = useState([]);
 
   const [error, setError] = useState("");
 
@@ -119,7 +121,7 @@ export const ProfileCandidate = () => {
       try {
         const profile = await apiConsumer.getCandidateByUserId(idUser);
 
-        setProfile(profile);
+        dispatch(actionCreator(SET_PROFILE, profile))
         dispatch(actionCreator(IS_EDITABLE))
       } catch (error) {
         console.log(error);
@@ -128,12 +130,16 @@ export const ProfileCandidate = () => {
     loadProfile();
   }, []);
 
-  const registerSubmit = (event) =>{
+  const registerSubmit = async (event) =>{
     event.preventDefault();
     try {
+      const profileUpdated = await apiConsumer.updateCandidate()
+
+       (profileUpdated) ? console.log('se ha actualizado con exito') : 'error'
+
         dispatch(actionCreator(IS_NOT_EDITABLE))
     } catch (error) {
-        
+        console.log(error)
     }
   }
 
