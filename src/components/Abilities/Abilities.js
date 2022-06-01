@@ -1,9 +1,10 @@
 import { Fragment } from "react";
 import { useSelector } from "react-redux";
 
-export const Abilities = ({handleAbilityChange, addAbility, removeAbility}) => {
-  const abilities = useSelector((state) => state.candidate.abilities)
-
+export const Abilities = ({handleAbilityChange, addAbility, currProfile, removeAbility}) => {
+  const abilities = useSelector((state) => state.candidate. abilities)
+  const isEditable = useSelector((state) => state.general.isEditable);
+  
   return (
     <Fragment>
       <div className="skills container-form-data col-12 col-md-5 mb-5">
@@ -16,13 +17,21 @@ export const Abilities = ({handleAbilityChange, addAbility, removeAbility}) => {
             placeholder="Habilidades"
             name="abilities"
             onChange={handleAbilityChange}
-            required
+            defaultValue={isEditable ? currProfile[0].abilities : abilities.abilities}
           />
           <button className="btn btn-secondary m-2" onClick={addAbility}>
             <i className="bi bi-plus-lg"></i>
           </button>
           <label htmlFor="floatingInput ">Habilidades</label>
         </div>
+        {isEditable && currProfile.map((ability,index)=>{
+          return(<div className="bubble" key={index}>
+          <div className="bubble ms-3">{ability}</div>
+          <button onClick={(event) => removeAbility(index, event)}>
+            <i className="bi bi-x"></i>
+          </button>
+        </div>)
+        })}
         {abilities &&
           abilities.map((ability, index) => {
             return (
