@@ -1,14 +1,16 @@
+import { useNavigate } from "react-router-dom";
 import { usePopup } from "../../hooks/usePopup.js";
 import { apiConsumer } from "../../services/apiConsumer.js";
 
 const Login = () => {
   const popUp = usePopup();
-  const loginSubmit = async (e) => {
-    e.preventDefault();
+  const navigate = useNavigate();
+  const loginSubmit = async (event) => {
+    event.preventDefault();
     try {
       const loginData = {
-        email: e.target[0].value,
-        password: e.target[1].value,
+        email: event.target[0].value,
+        password: event.target[1].value,
       };
 
       const loginUser = await apiConsumer.login(loginData);
@@ -21,6 +23,9 @@ const Login = () => {
         popUp(`${loginUser.error}`);
       } else {
         popUp(`Bienvenid@ a JuniorTalenTech`);
+        (localStorage.getItem('role') === 'candidate') 
+        ? setTimeout(()=> navigate('/profilecandidate'))
+        : setTimeout(()=> navigate('/profilecompany'))
       }
     } catch (error) {
       console.log(error);
