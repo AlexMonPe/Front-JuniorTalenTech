@@ -1,10 +1,5 @@
-import { Fragment, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import actionCreator from "../../store/actionTypes.js";
-import {
-  ADD_PROFILE_TRAINING,
-  REMOVE_PROFILE_TRAINING,
-} from "../../store/typesVar.js";
+import { Fragment } from "react";
+import { useSelector } from "react-redux";
 
 export const Training = ({
   handleTrainingChange,
@@ -12,20 +7,8 @@ export const Training = ({
   addTraining,
   currProfile,
 }) => {
-  const dispatch = useDispatch();
-
   const training = useSelector((state) => state.candidate.training);
   const isEditable = useSelector((state) => state.general.isEditable);
-
-  const addProfileTraining = (e) => {
-    e.preventDefault();
-    dispatch(actionCreator(ADD_PROFILE_TRAINING));
-  };
-
-  const removeProfileTraining = (index, e) => {
-    e.preventDefault();
-    dispatch(actionCreator(REMOVE_PROFILE_TRAINING, index));
-  };
 
   return (
     <Fragment>
@@ -40,8 +23,8 @@ export const Training = ({
                     id="floatingSelect"
                     aria-label="Floating label select example"
                     name="level"
-                    defaultValue={currProfile[index].level}
-                    onChange={(event) => handleTrainingChange(index, event)}
+                    defaultValue={training.level || ""}
+                    onBlur={(event) => handleTrainingChange(index, event)}
                   >
                     <option value="">Selecciona nivel</option>
                     <option value="Educacion Secundaria Obligatoria">
@@ -70,10 +53,9 @@ export const Training = ({
                     className="form-control"
                     id="specialty"
                     name="specialty"
-                    defaultValue={currProfile[index].specialty
-                    }
+                    defaultValue={training.specialty || ""}
                     placeholder="Especialidad"
-                    onChange={(event) => handleTrainingChange(index, event)}
+                    onBlur={(event) => handleTrainingChange(index, event)}
                   />
                   <label htmlFor="floatingInput">Especialidad</label>
                 </div>
@@ -84,9 +66,8 @@ export const Training = ({
                       placeholder="Nombre centro"
                       id="center"
                       name="center"
-                      defaultValue={currProfile[index].center 
-                      }
-                      onChange={(event) => handleTrainingChange(index, event)}
+                      defaultValue={training.center}
+                      onBlur={(event) => handleTrainingChange(index, event)}
                     />
                     <label htmlFor="floatingTextarea">
                       Centro / Universidad
@@ -100,12 +81,11 @@ export const Training = ({
                     id="start_year"
                     placeholder="año"
                     name="start_year"
-                    defaultValue={currProfile[index].start_year
-                    }
+                    defaultValue={training.start_year || ""}
                     pattern="^[0-9]+$"
                     minLength={4}
                     maxLength={4}
-                    onChange={(event) => handleTrainingChange(index, event)}
+                    onBlur={(event) => handleTrainingChange(index, event)}
                   />
                   <label htmlFor="floatingInput">Año inicio ( Ej: 2008 )</label>
                 </div>
@@ -116,12 +96,11 @@ export const Training = ({
                     id="finish_year"
                     placeholder="año"
                     name="finish_year"
-                    defaultValue={currProfile[index].finish_year
-                    }
+                    defaultValue={training.finish_year || ""}
                     pattern="^[0-9]+$"
                     minLength={4}
                     maxLength={4}
-                    onChange={(event) => handleTrainingChange(index, event)}
+                    onBlur={(event) => handleTrainingChange(index, event)}
                   />
                   <label htmlFor="floatingInput startDate">
                     Año fin ( Ej: 2021 )
@@ -130,13 +109,13 @@ export const Training = ({
                 <div>
                   <button
                     className="btn btn-secondary m-2"
-                    onClick={addProfileTraining}
+                    onClick={addTraining}
                   >
                     Añadir
                   </button>
                   <button
                     className="btn btn-secondary m-2"
-                    onClick={(event) => removeProfileTraining(index, event)}
+                    onClick={(event) => removeTraining(index, event)}
                   >
                     Eliminar
                   </button>
@@ -154,10 +133,8 @@ export const Training = ({
                     id="floatingSelect"
                     aria-label="Floating label select example"
                     name="level"
-                    defaultValue={
-                      isEditable ? currProfile[index].level : training.level
-                    }
-                    onChange={(event) => handleTrainingChange(index, event)}
+                    defaultValue={training.level || ""}
+                    onBlur={(event) => handleTrainingChange(index, event)}
                     required
                   >
                     <option value="">Selecciona nivel</option>
@@ -187,13 +164,9 @@ export const Training = ({
                     className="form-control"
                     id="specialty"
                     name="specialty"
-                    defaultValue={
-                      isEditable
-                        ? currProfile[index].specialty
-                        : training.specialty
-                    }
+                    defaultValue={training.specialty || ""}
                     placeholder="Especialidad"
-                    onChange={(event) => handleTrainingChange(index, event)}
+                    onBlur={(event) => handleTrainingChange(index, event)}
                     required
                   />
                   <label htmlFor="floatingInput">Especialidad</label>
@@ -205,10 +178,8 @@ export const Training = ({
                       placeholder="Nombre centro"
                       id="center"
                       name="center"
-                      defaultValue={
-                        isEditable ? currProfile[index].center : training.center
-                      }
-                      onChange={(event) => handleTrainingChange(index, event)}
+                      defaultValue={training.center || ""}
+                      onBlur={(event) => handleTrainingChange(index, event)}
                       required
                     />
                     <label htmlFor="floatingTextarea">
@@ -223,15 +194,11 @@ export const Training = ({
                     id="start_year"
                     placeholder="año"
                     name="start_year"
-                    defaultValue={
-                      isEditable
-                        ? currProfile[index].start_year
-                        : training.start_year
-                    }
+                    defaultValue={training.start_year || ""}
                     pattern="^[0-9]+$"
                     minLength={4}
                     maxLength={4}
-                    onChange={(event) => handleTrainingChange(index, event)}
+                    onBlur={(event) => handleTrainingChange(index, event)}
                     required
                   />
                   <label htmlFor="floatingInput">Año inicio ( Ej: 2008 )</label>
@@ -243,15 +210,11 @@ export const Training = ({
                     id="finish_year"
                     placeholder="año"
                     name="finish_year"
-                    defaultValue={
-                      isEditable
-                        ? currProfile[index].finish_year
-                        : training.finish_year
-                    }
+                    defaultValue={training.finish_year || ""}
                     pattern="^[0-9]+$"
                     minLength={4}
                     maxLength={4}
-                    onChange={(event) => handleTrainingChange(index, event)}
+                    onBlur={(event) => handleTrainingChange(index, event)}
                     required
                   />
                   <label htmlFor="floatingInput startDate">
