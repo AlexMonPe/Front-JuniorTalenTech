@@ -11,6 +11,7 @@ import { RegisterCompany } from './containers/RegisterCompany/RegisterCompany.js
 import { Home } from './components/Home/Home.js';
 import { ProfileCandidate } from './containers/ProfileCandidate/ProfileCandidate.js';
 import { ProfileCompany } from './containers/ProfileCompany/ProfileCompany.js';
+import { Search } from './containers/Search/Search.js';
 
 
 
@@ -28,6 +29,7 @@ function App() {
         <Route path="/profileCandidate" element={<ProfileCandidate />}></Route>
         <Route path="/profileCompany" element={<ProfileCompany />}></Route>
         <Route path="/login" element={<Login />}></Route>
+        <Route path="/search" element={<Search />}></Route>
         </Routes>
         {popupState.visible && <PopUp />}
       </BrowserRouter>
