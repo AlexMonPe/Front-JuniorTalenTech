@@ -5,6 +5,7 @@ import { Experience } from "../../components/Experience/Experience.js";
 import { Languages } from "../../components/Languages/Languages.js";
 import { PersonalData } from "../../components/PersonalData/PersonalData.js";
 import { Training } from "../../components/Training/Training.js";
+import { usePopup } from "../../hooks/usePopup.js";
 import { apiConsumer } from "../../services/apiConsumer.js";
 import actionCreator from "../../store/actionTypes.js";
 import {
@@ -28,7 +29,7 @@ import {
 
 export const ProfileCandidate = () => {
   const dispatch = useDispatch();
-
+  const popUp = usePopup();
   const profile = useSelector((state) => state.candidate.profile);
   const formProfile = useSelector((state) => state.candidate.profile[0].form);
   const profileExperiences = useSelector(
@@ -122,7 +123,7 @@ export const ProfileCandidate = () => {
     const loadProfile = async () => {
       try {
         const profile = await apiConsumer.getCandidateByUserId(idUser);
-
+        
         dispatch(actionCreator(SET_PROFILE, profile));
         dispatch(actionCreator(IS_EDITABLE));
       } catch (error) {
@@ -135,7 +136,15 @@ export const ProfileCandidate = () => {
   const registerSubmit = async (event) => {
     event.preventDefault();
     try {
-      await apiConsumer.updateCandidate(profileData);
+      const candidateUpdated = await apiConsumer.updateCandidate(profileData);
+
+      if (candidateUpdated.error) {
+        popUp(`${candidateUpdated.error}`);
+      } else {
+        popUp(
+          `¡Actualizado correctamente!`
+        );
+      }
 
       dispatch(actionCreator(IS_NOT_EDITABLE));
     } catch (error) {
