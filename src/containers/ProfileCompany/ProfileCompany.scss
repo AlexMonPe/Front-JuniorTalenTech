@@ -1,0 +1,7 @@
+.update-company-container {
+    @include background("code-rain-bg");
+    .btn-outline-info{
+        background: linear-gradient(0deg, #36d2f5, #ffffff00);
+        color: white;
+      }
+}
