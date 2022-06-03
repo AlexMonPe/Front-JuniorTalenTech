@@ -43,9 +43,7 @@ export const apiConsumer = {
   },
   getCandidateByUserId: async (idUser) => {
     try {
-      return await (
-        await fetch(`http://localhost:1919/candidates/${idUser}`)
-      ).json();
+      return await (await fetch(`http://localhost:1919/candidates/user/${idUser}`)).json();
     } catch (error) {
       console.log(error, "Error in getcandidateByUser in apiConsumer ");
     }
@@ -91,6 +89,20 @@ export const apiConsumer = {
     } catch (error) {
       console.log(error, 'error updating company in apiconsumer')
     }
-
+  },
+  getAllCandidates: async () => {
+    try {
+      
+      return await (await fetch('http://localhost:1919/candidates/')).json()
+    } catch (error) {
+      console.log(error, 'Error getting candidates')
+    }
+  },
+  getCandidateById: async (idCandidate) => {
+    try {
+      return await (await fetch(`http://localhost:1919/candidates/${idCandidate}`)).json();
+    } catch (error) {
+      console.log(error, "Error in getcandidateByUser in apiConsumer ");
+    }
   }
-};
+}
