@@ -1,4 +1,4 @@
-import { HANDLE_INPUT_COMPANY } from "../typesVar.js";
+import { HANDLE_INPUT_COMPANY, SET_COMPANY_PROFILE } from "../typesVar.js";
 
 const initialState = {
   form: {
@@ -14,6 +14,7 @@ const initialState = {
 };
 
 export const companyReducer = (state = initialState, action) => {
+  
   if (action.type === HANDLE_INPUT_COMPANY) {
     return {
       ...state,
@@ -21,5 +22,12 @@ export const companyReducer = (state = initialState, action) => {
     };
   }
 
+  if (action.type === SET_COMPANY_PROFILE){
+    return {
+      ...state,
+      form: action.payload,
+    }
+  }
+  
   return state;
 };
