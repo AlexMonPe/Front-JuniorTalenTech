@@ -39,20 +39,23 @@ export const Header = () => {
                 </a>
               </li>
             ) : (
-              <li className="nav-item">
+              <li className="nav-item d-flex">
+                <a className="nav-link active" aria-current="page" href="/">
+                  Registrarse
+                </a>
                 <a
                   className="nav-link active"
                   aria-current="page"
-                  href="/registercompany"
+                  href="/login"
                 >
-                  Registrarse
+                  Login
                 </a>
               </li>
             )}
 
             {localStorage.getItem("role") === "company" && (
               <li className="nav-item">
-                <a className="nav-link" href="#">
+                <a className="nav-link" href="/search">
                   Buscar
                 </a>
               </li>
@@ -78,11 +81,7 @@ export const Header = () => {
                     Inicio
                   </a>
                 </li>
-                <li>
-                  <a className="dropdown-item" href="/profilecompany">
-                    Editar perfil
-                  </a>
-                </li>
+
                 {localStorage.getItem("id") ? (
                   <li>
                     <a
