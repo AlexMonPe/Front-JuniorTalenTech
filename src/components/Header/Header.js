@@ -12,7 +12,7 @@ export const Header = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-light ">
       <div className="container-fluid">
-        <a className="navbar-brand" href="#">
+        <a className="navbar-brand" href="/">
           <img className="logo" src="/images/logo.png" alt="logo" />
         </a>
         <button
@@ -28,21 +28,35 @@ export const Header = () => {
         </button>
         <div className="collapse navbar-collapse" id="navbarNavDropdown">
           <ul className="navbar-nav">
-            <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="#">
-                Inicio
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="#">
-                Registrarse
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#">
-                Buscar
-              </a>
-            </li>
+            {localStorage.getItem("id") ? (
+              <li className="nav-item">
+                <a
+                  className="nav-link active"
+                  aria-current="page"
+                  href="/profilecompany"
+                >
+                  Perfil
+                </a>
+              </li>
+            ) : (
+              <li className="nav-item">
+                <a
+                  className="nav-link active"
+                  aria-current="page"
+                  href="/registercompany"
+                >
+                  Registrarse
+                </a>
+              </li>
+            )}
+
+            {localStorage.getItem("role") === "company" && (
+              <li className="nav-item">
+                <a className="nav-link" href="#">
+                  Buscar
+                </a>
+              </li>
+            )}
 
             <li className="nav-item dropdown">
               <a
@@ -60,39 +74,40 @@ export const Header = () => {
                 aria-labelledby="navbarDropdownMenuLink"
               >
                 <li>
-                  <a className="dropdown-item" href="#">
+                  <a className="dropdown-item" href="/">
                     Inicio
                   </a>
                 </li>
                 <li>
-                  <a className="dropdown-item" href="#">
+                  <a className="dropdown-item" href="/profilecompany">
                     Editar perfil
                   </a>
                 </li>
-                {localStorage.getItem('id') 
-                ? (<li>
-                  <a
-                    className="dropdown-item"
-                    onClick={() => {
-                      dispatch(actionCreator(USER_LOGOUT));
-                      popUp("Has cerrado sesión");
-                      setTimeout(() => navigate("/login"), 3000);
-                    }}
-                  >
-                    Cerrar sesión
-                  </a>
-                </li>)
-                : (<li>
-                  <a
-                    className="dropdown-item"
-                    onClick={() => {
-                      navigate("/login");
-                    }}
-                  >
-                    Iniciar sesión
-                  </a>
-                </li>)}
-                
+                {localStorage.getItem("id") ? (
+                  <li>
+                    <a
+                      className="dropdown-item"
+                      onClick={() => {
+                        dispatch(actionCreator(USER_LOGOUT));
+                        popUp("Has cerrado sesión");
+                        setTimeout(() => navigate("/login"), 3000);
+                      }}
+                    >
+                      Cerrar sesión
+                    </a>
+                  </li>
+                ) : (
+                  <li>
+                    <a
+                      className="dropdown-item"
+                      onClick={() => {
+                        navigate("/login");
+                      }}
+                    >
+                      Iniciar sesión
+                    </a>
+                  </li>
+                )}
               </ul>
             </li>
           </ul>
