@@ -52,17 +52,45 @@ export const apiConsumer = {
   },
   updateCandidate: async (candidateProfile) => {
     try {
-      const profileUpdated = await fetch("http://localhost:1919/candidates/" + candidateProfile._id, {
-        method: "PATCH",
-        body: JSON.stringify(candidateProfile),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const profileUpdated = await fetch(
+        `http://localhost:1919/candidates/${candidateProfile._id}` ,
+        {
+          method: "PATCH",
+          body: JSON.stringify(candidateProfile),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
       return profileUpdated;
-
     } catch (error) {
       console.log(error, "Error in updateProfile in apiConsumer");
     }
   },
+  getCompanyByUserId: async (idUser) => {
+    try {
+      const companyFound = await fetch(`http://localhost:1919/companies/${idUser}`)
+
+      return companyFound.json();
+    } catch (error) {
+      console.log(error, "Error getting company by user id in apiConsumer");
+    }
+  },
+  updateCompany: async (company) => {
+    try {
+      console.log(company._id, 'id')
+      const companyUpdated = await fetch(`http://localhost:1919/companies/${company._id}`,
+      {
+        method: "PATCH",
+        body: JSON.stringify(company),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      return companyUpdated;
+    } catch (error) {
+      console.log(error, 'error updating company in apiconsumer')
+    }
+
+  }
 };
