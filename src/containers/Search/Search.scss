@@ -1,0 +1,62 @@
+.search-container {
+  @include background("search");
+  display: flex;
+  padding: 2em;
+  justify-content: center;
+  .container-data {
+    display: flex;
+    
+  }
+  img {
+    height: 2em;
+    width: 2em;
+    margin-right: 1em;
+    margin-top: 5px;
+  }
+  h5 {
+    cursor: pointer;
+    &:hover {
+      color: rgba(1, 131, 164, 0.379);
+    }
+  }
+  .candidate {
+    padding: 1.5em;
+    &:hover {
+      background-color: rgba(184, 230, 241, 0.738);
+    }
+  }
+  .abilities {
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+    flex-wrap: wrap;
+    .ability {
+      background-color: $btn-color;
+      padding: 5px;
+      border-radius: 5px;
+    }
+  }
+}
+
+.candidates {
+  background-color: $bg-color-form;
+  border-right: 5px double;
+  width: 19vw;
+}
+
+.detail {
+    padding: 1.5em;
+  background-color: $bg-color-form;
+  width: 42vw;
+  h5{
+      text-align: center;
+  }
+  .form-data, .training, .languages,.experience{
+      display: flex;
+      flex-direction: column;
+  }
+  .abilities{
+      display: flex;
+      flex-direction: row;
+  }
+}
