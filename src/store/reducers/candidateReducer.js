@@ -103,7 +103,10 @@ export const candidateReducer = (state = initialState, action) => {
     };
   }
 
-  if ( action.type === HANDLE_EXPERIENCE ||action.type === HANDLE_EXPERIENCE_PROFILE) {
+  if (
+    action.type === HANDLE_EXPERIENCE ||
+    action.type === HANDLE_EXPERIENCE_PROFILE
+  ) {
     if (action.type === HANDLE_EXPERIENCE) {
       return {
         ...state,
@@ -115,7 +118,10 @@ export const candidateReducer = (state = initialState, action) => {
     return JSON.parse(JSON.stringify(state));
   }
 
-  if ( action.type === ADD_EXPERIENCE || action.type === ADD_PROFILE_EXPERIENCE) {
+  if (
+    action.type === ADD_EXPERIENCE ||
+    action.type === ADD_PROFILE_EXPERIENCE
+  ) {
     let newExperience = {
       company_name: "",
       work_name: "",
@@ -133,22 +139,39 @@ export const candidateReducer = (state = initialState, action) => {
       return JSON.parse(JSON.stringify(state));
     }
   }
-  if (action.type === REMOVE_EXPERIENCE || action.type === REMOVE_PROFILE_EXPERIENCE ) {
+  if (
+    action.type === REMOVE_EXPERIENCE ||
+    action.type === REMOVE_PROFILE_EXPERIENCE
+  ) {
     if (action.type === REMOVE_EXPERIENCE) {
       let expData = [...state.experience];
+
       if (expData.length > 1) expData.splice(action.payload, 1);
+
       return {
         ...state,
         experience: expData,
       };
-    } 
-    if (state.profile[0].experience.length > 1) {
-      state.profile[0].experience.splice(action.payload, 1);
     }
-    return JSON.parse(JSON.stringify(state));
+    if (state.profile[0].experience.length > 1) {
+      let experiences = [...state.profile[0].experience];
+
+      // state.profile[0].experience.splice(action.payload, 1);
+      let newExp = experiences.slice(0, action.payload).concat(experiences.slice(action.payload + 1));
+      
+      console.log(experiences)
+      console.log(newExp, 'exper')
+      return {
+        ...state,
+        profile: [...state.profile,[{ experience: newExp}]]
+      };
+    }
   }
 
-  if ( action.type === HANDLE_TRAINING || action.type === HANDLE_TRAINING_PROFILE) {
+  if (
+    action.type === HANDLE_TRAINING ||
+    action.type === HANDLE_TRAINING_PROFILE
+  ) {
     if (action.type === HANDLE_TRAINING) {
       return {
         ...state,
@@ -179,7 +202,10 @@ export const candidateReducer = (state = initialState, action) => {
     }
   }
 
-  if ( action.type === REMOVE_TRAINING || action.type === REMOVE_PROFILE_TRAINING ) {
+  if (
+    action.type === REMOVE_TRAINING ||
+    action.type === REMOVE_PROFILE_TRAINING
+  ) {
     if (action.type === REMOVE_TRAINING) {
       let trainData = [...state.training];
       if (trainData.length > 1) trainData.splice(action.payload, 1);
@@ -193,7 +219,10 @@ export const candidateReducer = (state = initialState, action) => {
     }
   }
 
-  if ( action.type === HANDLE_LANGUAGE || action.type === HANDLE_LANGUAGE_PROFILE ) {
+  if (
+    action.type === HANDLE_LANGUAGE ||
+    action.type === HANDLE_LANGUAGE_PROFILE
+  ) {
     if (action.type === HANDLE_LANGUAGE) {
       return {
         ...state,
@@ -221,7 +250,10 @@ export const candidateReducer = (state = initialState, action) => {
     }
   }
 
-  if (action.type === REMOVE_LANGUAGE || action.type === REMOVE_LANGUAGE_PROFILE) {
+  if (
+    action.type === REMOVE_LANGUAGE ||
+    action.type === REMOVE_LANGUAGE_PROFILE
+  ) {
     if (action.type === REMOVE_LANGUAGE) {
       let langData = [...state.languages];
       langData.splice(action.payload, 1);
@@ -234,7 +266,10 @@ export const candidateReducer = (state = initialState, action) => {
     return JSON.parse(JSON.stringify(state));
   }
 
-  if (action.type === HANDLE_ABILITY || action.type === HANDLE_ABILITY_PROFILE) {
+  if (
+    action.type === HANDLE_ABILITY ||
+    action.type === HANDLE_ABILITY_PROFILE
+  ) {
     if (action.type === HANDLE_ABILITY) {
       return {
         ...state,
@@ -261,7 +296,10 @@ export const candidateReducer = (state = initialState, action) => {
     }
   }
 
-  if (action.type === REMOVE_ABILITY || action.type === REMOVE_ABILITY_PROFILE) {
+  if (
+    action.type === REMOVE_ABILITY ||
+    action.type === REMOVE_ABILITY_PROFILE
+  ) {
     if (action.type === REMOVE_ABILITY) {
       let abilityData = [...state.abilities];
       abilityData.splice(action.payload, 1);
