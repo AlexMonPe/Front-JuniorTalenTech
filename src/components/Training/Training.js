@@ -23,8 +23,8 @@ export const Training = ({
                     id="floatingSelect"
                     aria-label="Floating label select example"
                     name="level"
-                    defaultValue={training.level || ""}
-                    onBlur={(event) => handleTrainingChange(index, event)}
+                    value={training.level}
+                    onChange={(event) => handleTrainingChange(index, event)}
                   >
                     <option value="">Selecciona nivel</option>
                     <option value="Educacion Secundaria Obligatoria">
