@@ -28,7 +28,6 @@ export const PersonalData = ({ handleInputChange, currProfile }) => {
             id="surname"
             placeholder="apellido"
             name="surname"
-            pattern="[a-zA-Z]{2,254}"
             onBlur={handleInputChange}
             defaultValue={isEditable ? currProfile.surname : ""}
             required
