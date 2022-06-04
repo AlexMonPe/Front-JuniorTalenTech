@@ -122,7 +122,7 @@ const RegisterCandidate = () => {
        return popUp(`${candidateCreated.error}`);
          
       }else {
-        popUp(`Te has registrado correctamente, ¡bienvenido ${candidateData.name}!`)
+        popUp(`Te has registrado correctamente, ¡bienvenid@!`)
          setTimeout(()=>navigate("/login"), 4000);
       }  
       
