@@ -28,7 +28,7 @@ export const Header = () => {
         </button>
         <div className="collapse navbar-collapse" id="navbarNavDropdown">
           <ul className="navbar-nav">
-            {localStorage.getItem("id") ? (
+            {localStorage.getItem("role") == "company" && (
               <li className="nav-item">
                 <a
                   className="nav-link active"
@@ -38,21 +38,18 @@ export const Header = () => {
                   Perfil
                 </a>
               </li>
-            ) : (
+            )}{" "}
+            {localStorage.getItem("role") == "candidate" && (
               <li className="nav-item d-flex">
-                <a className="nav-link active" aria-current="page" href="/">
-                  Registrarse
-                </a>
                 <a
                   className="nav-link active"
                   aria-current="page"
-                  href="/login"
+                  href="/profilecandidate"
                 >
-                  Login
+                  Perfil
                 </a>
               </li>
             )}
-
             {localStorage.getItem("role") === "company" && (
               <li className="nav-item">
                 <a className="nav-link" href="/search">
@@ -60,7 +57,16 @@ export const Header = () => {
                 </a>
               </li>
             )}
-
+            {!localStorage.getItem("id") && (
+              <li className="nav-item d-flex">
+                <a className="nav-link" href="/login">
+                  Iniciar sesión
+                </a>
+                <a className="nav-link" href="/">
+                  Registrarse
+                </a>
+              </li>
+            )}
             <li className="nav-item dropdown">
               <a
                 className="nav-link dropdown-toggle"
