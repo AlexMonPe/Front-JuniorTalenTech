@@ -1,3 +1,6 @@
+@import "./_variables.scss";
+@import "./reset.scss";
+
 @font-face {
   font-family: calvino;
   src: url('../../public/fonts/Calvino.ttf');
@@ -7,9 +10,6 @@
   font-family: newYork;
   src: url('../../public/fonts/NewYork.otf');
 }
-
-@import "./variables.scss";
-@import "./reset.scss";
 
 
 @import "../../node_modules/bootstrap-icons/font/bootstrap-icons.scss";
