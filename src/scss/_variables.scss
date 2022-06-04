@@ -7,9 +7,8 @@ $bg-color-form: #ffffffd1;
 //mixin
 
 @mixin background($imgName, $bgSize: cover, $repeat: no-repeat) {
-  $url: "../../public/images/#{$imgName}.jpg";
   background: {
-    image: url($url);
+    image: url("../images/#{$imgName}.jpg");
     size: $bgSize;
     repeat: $repeat;
   }
