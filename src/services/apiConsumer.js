@@ -1,7 +1,7 @@
 export const apiConsumer = {
   registerCandidate: async (formData) => {
     try {
-      const createCandidate = await fetch("http://localhost:1919/candidates/", {
+      const createCandidate = await fetch("https://junior-talent-tech-back.herokuapp.com/candidates/", {
         method: "POST",
         body: JSON.stringify(formData),
         headers: {
@@ -15,7 +15,7 @@ export const apiConsumer = {
   },
   registerCompany: async (formData) => {
     try {
-      const createCompany = await fetch("http://localhost:1919/companies/", {
+      const createCompany = await fetch("https://junior-talent-tech-back.herokuapp.com/companies/", {
         method: "POST",
         body: JSON.stringify(formData),
         headers: {
@@ -29,7 +29,7 @@ export const apiConsumer = {
   },
   login: async (loginData) => {
     try {
-      const loginUser = await fetch("http://localhost:1919/users/login", {
+      const loginUser = await fetch("https://junior-talent-tech-back.herokuapp.com/users/login", {
         method: "POST",
         body: JSON.stringify(loginData),
         headers: {
@@ -43,7 +43,7 @@ export const apiConsumer = {
   },
   getCandidateByUserId: async (idUser) => {
     try {
-      return await (await fetch(`http://localhost:1919/candidates/user/${idUser}`)).json();
+      return await (await fetch(`https://junior-talent-tech-back.herokuapp.com/candidates/user/${idUser}`)).json();
     } catch (error) {
       console.log(error, "Error in getcandidateByUser in apiConsumer ");
     }
@@ -51,7 +51,7 @@ export const apiConsumer = {
   updateCandidate: async (candidateProfile) => {
     try {
       const profileUpdated = await fetch(
-        `http://localhost:1919/candidates/${candidateProfile._id}` ,
+        `https://junior-talent-tech-back.herokuapp.com/candidates/${candidateProfile._id}` ,
         {
           method: "PATCH",
           body: JSON.stringify(candidateProfile),
@@ -67,7 +67,7 @@ export const apiConsumer = {
   },
   getCompanyByUserId: async (idUser) => {
     try {
-      const companyFound = await fetch(`http://localhost:1919/companies/${idUser}`)
+      const companyFound = await fetch(`https://junior-talent-tech-back.herokuapp.com/companies/${idUser}`)
 
       return companyFound.json();
     } catch (error) {
@@ -77,7 +77,7 @@ export const apiConsumer = {
   updateCompany: async (company) => {
     try {
       console.log(company._id, 'id')
-      const companyUpdated = await fetch(`http://localhost:1919/companies/${company._id}`,
+      const companyUpdated = await fetch(`https://junior-talent-tech-back.herokuapp.com/companies/${company._id}`,
       {
         method: "PATCH",
         body: JSON.stringify(company),
@@ -93,14 +93,14 @@ export const apiConsumer = {
   getAllCandidates: async () => {
     try {
       
-      return await (await fetch('http://localhost:1919/candidates/')).json()
+      return await (await fetch('https://junior-talent-tech-back.herokuapp.com/candidates/')).json()
     } catch (error) {
       console.log(error, 'Error getting candidates')
     }
   },
   getCandidateById: async (idCandidate) => {
     try {
-      return await (await fetch(`http://localhost:1919/candidates/${idCandidate}`)).json();
+      return await (await fetch(`https://junior-talent-tech-back.herokuapp.com/candidates/${idCandidate}`)).json();
     } catch (error) {
       console.log(error, "Error in getcandidateByUser in apiConsumer ");
     }
