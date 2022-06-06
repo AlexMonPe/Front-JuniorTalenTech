@@ -1,6 +1,3 @@
-@import "./_variables.scss";
-@import "./reset.scss";
-
 @font-face {
   font-family: calvino;
   src: url('../../public/fonts/Calvino.ttf');
@@ -10,7 +7,8 @@
   font-family: newYork;
   src: url('../../public/fonts/NewYork.otf');
 }
-
+@import "./_variables.scss";
+@import "./reset.scss";
 
 //Components
 
