@@ -157,13 +157,17 @@ export const candidateReducer = (state = initialState, action) => {
       let experiences = [...state.profile[0].experience];
 
       // state.profile[0].experience.splice(action.payload, 1);
-      let newExp = experiences.slice(0, action.payload).concat(experiences.slice(action.payload + 1));
-      
+      // let newExp = experiences.slice(0, action.payload).concat(experiences.slice(action.payload + 1));
+      const elementToRemove = experiences.find((exp, i)=> i === action.payload )
+      console.log(elementToRemove, 'elemento a eliminar')
+
+      const newExp = experiences.filter((exp)=> exp.company_name !== elementToRemove.company_name)
+
       console.log(experiences)
-      console.log(newExp, 'exper')
+      console.log(newExp, 'nuevo array sin el elemento eliminado')
       return {
         ...state,
-        profile: [...state.profile,[{ experience: newExp}]]
+        profile: [(state.profile[0] = {...state.profile[0], experience: newExp} )]
       };
     }
   }
