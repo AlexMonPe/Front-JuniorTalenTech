@@ -5,7 +5,6 @@ $bubble-bg: #ffffff00;
 $bg-color-form: #ffffffd1;
 
 //mixin
-
 @mixin background($imgName, $bgSize: cover, $repeat: no-repeat) {
   background: {
     image: url("../assets/images/#{$imgName}.jpg");
