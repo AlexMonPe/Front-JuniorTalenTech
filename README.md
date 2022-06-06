@@ -1,6 +1,8 @@
 # Frontend JuniorTalenTech
 [![juniortalentech.gif](https://i.postimg.cc/gJXGr4DZ/logo-Junior-Talentech.gif)](https://postimg.cc/ThJxwgvT)
 
+AWS : https://master.d3jnb5yg9pd4ik.amplifyapp.com/
+
 ## Table of contents
   - [Tech Stack🛠](#Tech-Stack)
   - [Requisitos🥑](#Descripcion-y-usabilidad)
@@ -35,7 +37,7 @@ Además se ha hecho uso de las siguientes librerías/herramientas/tecnologías p
 Proyecto final del bootcamp en Geekshubs en el cuál nos dan total libertad para realizar un proyecto full stack para implementar los conociemientos adquiridos en el curso, he optado por realizar un portal de empleo dedicado a perfiles junior para facilitar el proceso de selección y evitar la búsqueda masiva de ofertas que frustran cuándo estás empezando, lo que hace diferente a esta web es que los candidatos no tienen que buscar ofertas, simplemente añadir su información de candidatos, su experiencia y su formación y esperar a que una empresa le encuentre y contacte con el candidato.
 La parte del Frontend la he realizado con React con hooks y para manejar el estado global redux, e incluso almacenar algunos datos que he utilizado en otros componentes sin necesidad de volver a hacer más peticiones al back y consumir más recursos, para el diseño responsive y estilo de la web he utilizado la última versión de `Bootstrap`, con el que con su diseño grid de columnas he podido manejar el diseño bastante bien, junto con el precompilador `Sass` he reutilizado codigo con variables e incluso algun `mixin`.
 
-Puedes acceder a la web a través de [www.juniorTalenTech.geeks](https://develop.d25tm08by0pwym.amplifyapp.com/) y el funcionamiento de la web es el siguiente:
+Puedes acceder a la web a través de [www.juniorTalenTech.geeks](https://master.d3jnb5yg9pd4ik.amplifyapp.com/) y el funcionamiento de la web es el siguiente:
 - La pagina inicial es **Home**, en la ruta `/` dónde se visualiza la página principal, una breve información para potenciales clientes y acceso al registro tanto para empresas como candidatos.
 - Registro de empresa está en la ruta `/registercompany` dónde cualquier persona puede registrarse como empresa con tan solo unos datos básicos de la misma, este registro incluye el registro del usuario también por lo que es necesario incluir una direccion de correo válida, se asigna el role `company` por defecto.
 - Registro dsl candidato en la ruta `/registercandidate` dónde cualquier persona puede registrarse como candidate para la búsqueda de empleo introduciendo sus datos personales y rellenando su currículum de formación, experiencia, idiomas y habilidades, se asigna el role `candidate` por defecto.
